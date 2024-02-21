@@ -16,16 +16,54 @@ const countryModel_1 = __importDefault(require("../models/countryModel"));
 const flagMemoryController = {
     showHomepage: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const country = yield countryModel_1.default.getCountry();
-            res.send(country);
+            const startingCountry = yield countryModel_1.default.getCountryCode();
+            req.session.seenCountries = [];
+            req.session.lastCountry = startingCountry;
+            req.session.lives = 3;
+            req.session.score = 0;
+            req.session.highScore = 0;
+            res.send(req.session);
+            return;
         }
         catch (error) {
             console.log(error);
-            res.send("error making a db query");
+            res.send("error handling GET /flag-memory");
         }
     }),
-    checkGuess: (req, res) => {
-        res.send("guessing");
-    }
+    checkGuess: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const guess = req.body["guess"];
+            if (!req.session.lastCountry || !guess || !["seen", "new"].includes(guess) || req.session.lives <= 0) {
+                res.redirect("./");
+                return;
+            }
+            let hasSeen = req.session.seenCountries.includes(req.session.lastCountry);
+            if ((hasSeen && guess === "seen") || (!hasSeen && guess == "new")) {
+                req.session.score += 1;
+            }
+            else {
+                req.session.lives -= 1;
+                if (req.session.lives === 0) {
+                    req.session.highScore = Math.max(req.session.highScore, req.session.score);
+                    res.send("you lost!");
+                    return;
+                }
+            }
+            req.session.seenCountries.push(req.session.lastCountry);
+            const randomNumber = Math.random();
+            if (randomNumber < 0.5) {
+                req.session.lastCountry = yield countryModel_1.default.getCountryCode();
+            }
+            else {
+                const randomIndex = Math.floor(Math.random() * req.session.seenCountries.length);
+                req.session.lastCountry = req.session.seenCountries[randomIndex];
+            }
+            res.send(req.session);
+        }
+        catch (error) {
+            console.log(error);
+            res.send("error handling POST /flag-memory");
+        }
+    })
 };
 exports.default = flagMemoryController;

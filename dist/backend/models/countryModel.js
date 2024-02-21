@@ -14,11 +14,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
 class CountryModel {
-    getCountry() {
+    getCountryCode() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield database_1.default.query('SELECT country_code FROM countries ORDER BY RANDOM() LIMIT 1');
-                return result.rows[0];
+                return result.rows[0]["country_code"];
             }
             catch (error) {
                 console.log(error);
