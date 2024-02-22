@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const express_session_1 = __importDefault(require("express-session"));
+const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
 const index_1 = __importDefault(require("./routes/index"));
 const flagMemory_1 = __importDefault(require("./routes/flagMemory"));
 const moreOrLess_1 = __importDefault(require("./routes/moreOrLess"));
@@ -14,7 +15,14 @@ app.use(express_1.default.json());
 app.use((0, express_session_1.default)({
     secret: 'my-secret-key',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+}));
+app.use((0, express_rate_limit_1.default)({
+    windowMs: 24 * 60 * 60 * 10000,
+    max: 5,
+    message: 'You have exceeded 5 requests per day!',
+    standardHeaders: true,
+    legacyHeaders: false,
 }));
 app.use("/", index_1.default);
 app.use("/flag-memory", flagMemory_1.default);
