@@ -1,6 +1,5 @@
 import express from "express";
 import session from "express-session";
-import rateLimit from "express-rate-limit"
 
 import indexRouter from "./routes/index";
 import flagMemoryRouter from "./routes/flagMemory";
@@ -26,13 +25,6 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
-app.use(rateLimit({
-    windowMs: 24 * 60 * 60 * 10000,
-    max: 5,
-    message: 'You have exceeded 5 requests per day!',
-    standardHeaders: true,
-    legacyHeaders: false,
-}))
 
 
 app.use("/", indexRouter);
