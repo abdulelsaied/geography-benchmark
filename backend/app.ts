@@ -1,5 +1,6 @@
 import express from "express";
 import session from "express-session";
+import cors from "cors";
 
 import indexRouter from "./routes/index";
 import flagMemoryRouter from "./routes/flagMemory";
@@ -20,6 +21,11 @@ declare module 'express-session' {
 }
 
 app.use(express.json());
+app.use(cors({
+    origin: '*',
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}))
 app.use(session({
     secret: 'my-secret-key',
     resave: false,

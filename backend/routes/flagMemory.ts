@@ -3,8 +3,8 @@ import flagMemoryController from "../controllers/flagMemoryController"
 
 const router = express.Router();
 
-router.get("/", flagMemoryController.showHomepage);
-router.post("/", flagMemoryController.checkGuess);
+router.post("/start", flagMemoryController.startGame);
+router.post("/submit-guess", flagMemoryController.submitGuess);
 
 export default router;
 

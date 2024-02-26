@@ -14,9 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/cors": "^2.8.17",
     "@types/postcss-js": "^4.0.4",
     "autoprefixer": "^10.4.17",
+    "axios": "^1.6.7",
     "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-rate-limit": "^7.1.5",

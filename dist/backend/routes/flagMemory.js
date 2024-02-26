@@ -6,6 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const flagMemoryController_1 = __importDefault(require("../controllers/flagMemoryController"));
 const router = express_1.default.Router();
-router.get("/", flagMemoryController_1.default.showHomepage);
-router.post("/", flagMemoryController_1.default.checkGuess);
+router.post("/start", flagMemoryController_1.default.startGame);
+router.post("/submit-guess", flagMemoryController_1.default.submitGuess);
 exports.default = router;

@@ -14,7 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const countryModel_1 = __importDefault(require("../models/countryModel"));
 const flagMemoryController = {
-    showHomepage: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    startGame: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
             const startingCountry = yield countryModel_1.default.getCountryCode();
             req.session.seenCountries = [];
@@ -22,19 +22,18 @@ const flagMemoryController = {
             req.session.lives = 3;
             req.session.score = 0;
             req.session.highScore = 0;
-            res.send(req.session);
-            return;
+            res.json(req.session);
         }
         catch (error) {
             console.log(error);
-            res.send("error handling GET /flag-memory");
+            res.send("error handling POST /flag-memory/start");
         }
     }),
-    checkGuess: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    submitGuess: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         try {
-            const guess = req.body["guess"];
+            const guess = req.body.guess;
             if (!req.session.lastCountry || !guess || !["seen", "new"].includes(guess) || req.session.lives <= 0) {
-                res.redirect("./");
+                res.send("invalid post req");
                 return;
             }
             let hasSeen = req.session.seenCountries.includes(req.session.lastCountry);
@@ -58,11 +57,13 @@ const flagMemoryController = {
                 const randomIndex = Math.floor(Math.random() * req.session.seenCountries.length);
                 req.session.lastCountry = req.session.seenCountries[randomIndex];
             }
-            res.send(req.session);
+            res.json(req.session);
+            return;
         }
         catch (error) {
             console.log(error);
             res.send("error handling POST /flag-memory");
+            return;
         }
     })
 };
