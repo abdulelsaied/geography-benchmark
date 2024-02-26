@@ -5,6 +5,7 @@ import { handleGuess } from './utils/GameButtonFunctions'
 
 function App() {
   return <div>
+          <GameButton text = "start" buttonFunction = {() => handleGuess("seen")}/>
           <GameButton text = "seen" buttonFunction = {() => handleGuess("seen")}/>
           <GameButton text = "new" buttonFunction = {() => handleGuess("new")} />
         </div>
