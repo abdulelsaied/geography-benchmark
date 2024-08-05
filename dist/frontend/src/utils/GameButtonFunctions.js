@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.handleGuess = void 0;
+exports.startGame = exports.handleGuess = void 0;
 const handleGuess = (guess) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = {
@@ -29,3 +29,18 @@ const handleGuess = (guess) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.handleGuess = handleGuess;
+const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const response = yield fetch("http://localhost:8000/flag-memory/start", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(response.text);
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
+exports.startGame = startGame;

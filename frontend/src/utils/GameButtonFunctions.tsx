@@ -16,3 +16,17 @@ export const handleGuess = async (guess: string) => {
     }
 }
 
+export const startGame = async () => {
+    try {
+        const response = await fetch("http://localhost:8000/flag-memory/start", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        console.log(response.text);
+    } catch (error) {
+        console.log(error);
+    }
+}
+

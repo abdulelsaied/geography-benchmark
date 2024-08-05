@@ -21,6 +21,7 @@ class CountryModel {
                 return result.rows[0]["country_code"];
             }
             catch (error) {
+                console.log("problem getting country code");
                 console.log(error);
             }
         });
