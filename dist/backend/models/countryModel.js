@@ -17,11 +17,21 @@ class CountryModel {
     getCountryCode() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const result = yield database_1.default.query('SELECT country_code FROM countries ORDER BY RANDOM() LIMIT 1');
+                const result = yield database_1.default.query('SELECT country_code FROM Country ORDER BY RANDOM() LIMIT 1');
                 return result.rows[0]["country_code"];
             }
             catch (error) {
-                console.log("problem getting country code");
+                console.log(error);
+            }
+        });
+    }
+    getCountry() {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield database_1.default.query('SELECT * FROM Country ORDER BY RANDOM() LIMIT 1');
+                return result.rows[0];
+            }
+            catch (error) {
                 console.log(error);
             }
         });

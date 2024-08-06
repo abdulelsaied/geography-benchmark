@@ -1,16 +1,9 @@
+import countryApi from "../services/countryApi"
+
 export const handleGuess = async (guess: string) => {
     try {
-        const data = {
-            "guess": guess
-        }
-        const response = await fetch("http://localhost:8000/flag-memory/submit-guess", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data),
-        });
-        console.log(response.text);
+        const country = await countryApi.fetchRandomCountry();
+        console.log(country);
     } catch (error) {
         console.log(error);
     }
@@ -18,13 +11,8 @@ export const handleGuess = async (guess: string) => {
 
 export const startGame = async () => {
     try {
-        const response = await fetch("http://localhost:8000/flag-memory/start", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-        console.log(response.text);
+        const countryCode = await countryApi.fetchRandomCountryCode();
+        console.log(countryCode);
     } catch (error) {
         console.log(error);
     }

@@ -12,25 +12,27 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.startGame = exports.handleGuess = void 0;
-const countryApi_1 = __importDefault(require("../services/countryApi"));
-const handleGuess = (guess) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const country = yield countryApi_1.default.fetchRandomCountry();
-        console.log(country);
-    }
-    catch (error) {
-        console.log(error);
-    }
-});
-exports.handleGuess = handleGuess;
-const startGame = () => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const countryCode = yield countryApi_1.default.fetchRandomCountryCode();
-        console.log(countryCode);
-    }
-    catch (error) {
-        console.log(error);
-    }
-});
-exports.startGame = startGame;
+const countryModel_1 = __importDefault(require("../models/countryModel"));
+const countryController = {
+    getCountryCode: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const countryCode = yield countryModel_1.default.getCountryCode();
+            res.json(countryCode);
+        }
+        catch (error) {
+            console.log(error);
+            res.send("error handling POST /flag-memory/start");
+        }
+    }),
+    getCountry: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const country = yield countryModel_1.default.getCountry();
+            res.json(country);
+        }
+        catch (error) {
+            console.log(error);
+            res.send("error handling POST /flag-memory/start");
+        }
+    }),
+};
+exports.default = countryController;

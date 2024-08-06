@@ -1,24 +1,10 @@
 import express from "express";
-import session from "express-session";
 import cors from "cors";
-
-import indexRouter from "./routes/index";
-import flagMemoryRouter from "./routes/flagMemory";
-import moreOrLessRouter from "./routes/moreOrLess";
+import countryRouter from "./routes/country";
 
 const port = 8000;
 
 const app = express();
-
-declare module 'express-session' {
-    export interface SessionData {
-        lives: number;
-        score: number;
-        highScore: number;
-        seenCountries: string[];
-        lastCountry: string;
-    }
-}
 
 app.use(express.json());
 app.use(cors({
@@ -26,16 +12,8 @@ app.use(cors({
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }))
-app.use(session({
-    secret: 'my-secret-key',
-    resave: false,
-    saveUninitialized: true,
-}));
 
-
-app.use("/", indexRouter);
-app.use("/flag-memory", flagMemoryRouter);
-app.use("/more-or-less", moreOrLessRouter);
+app.use("/country", countryRouter);
 
 app.set("view engine", "ejs");
 
