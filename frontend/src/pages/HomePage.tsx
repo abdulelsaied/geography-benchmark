@@ -1,11 +1,20 @@
-import React from 'react';
-import MenuButton from "../components/MenuButton"
+import React from 'react'
+import Header from '../components/Header';
+import { FaGlobe } from 'react-icons/fa';
+import Footer from '../components/Footer';
 
 const HomePage: React.FC = () => {
   return (
-    <div>
-      <h1>Geography Benchmark</h1>
-      <MenuButton text = "Flag Memory Game" buttonFunction={() => window.location.href = '/flag-memory'} />
+    <div className = "h-screen flex flex-col">
+        <><Header
+            title = "Geography Benchmark"
+            subtitle = "Test your geo skills with mini games"
+            icon = {<FaGlobe />}
+            backgroundColor = "#F6FEDB"
+        /></>
+        <div className = "mt-auto">
+            <Footer />
+        </div>
     </div>
   );
 };

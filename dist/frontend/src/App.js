@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 require("./styles/output.css");
+require("./styles/tailwind.css");
 const react_router_dom_1 = require("react-router-dom");
 const HomePage_1 = __importDefault(require("./pages/HomePage"));
 const FlagMemoryPage_1 = __importDefault(require("./pages/FlagMemoryPage"));

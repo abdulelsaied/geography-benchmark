@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { fetchFlag } from '../services/flagApi';
 
 interface FlagProps {
     countryCode: string;
@@ -25,8 +24,12 @@ const Flag: React.FC<FlagProps> = ({countryCode}) => {
         }
     }, [countryCode])
     return (
-        <div>
-            <img src = { flagUrl } alt = { `Flag of ${countryCode}` }/>
+        <div className="w-[380px] h-[253px] border-4 border-black overflow-hidden flex items-center justify-center m-auto">
+            <img 
+                src={flagUrl} 
+                alt={`Flag of ${countryCode}`} 
+                className="object-fill w-full h-full"
+            />
         </div>
     )
 }

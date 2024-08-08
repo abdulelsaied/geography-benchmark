@@ -28,6 +28,6 @@ const Flag = ({ countryCode }) => {
             }
         };
     }, [countryCode]);
-    return ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)("img", { src: flagUrl, alt: `Flag of ${countryCode}` }) }));
+    return ((0, jsx_runtime_1.jsx)("div", { className: "w-[380px] h-[253px] border-4 border-black overflow-hidden flex items-center justify-center m-auto", children: (0, jsx_runtime_1.jsx)("img", { src: flagUrl, alt: `Flag of ${countryCode}`, className: "object-fill w-full h-full" }) }));
 };
 exports.default = Flag;

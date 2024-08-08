@@ -18,8 +18,9 @@ const GameButton_1 = __importDefault(require("../components/GameButton"));
 const Header_1 = __importDefault(require("../components/Header"));
 const StatusBar_1 = __importDefault(require("../components/StatusBar"));
 const countryApi_1 = __importDefault(require("../services/countryApi"));
-const fa_1 = require("react-icons/fa"); // Example icon
+const fa_1 = require("react-icons/fa");
 const Flag_1 = __importDefault(require("../components/Flag"));
+const Footer_1 = __importDefault(require("../components/Footer"));
 const FlagMemoryPage = () => {
     const [gameStarted, setGameStarted] = (0, react_1.useState)(false);
     const [lives, setLives] = (0, react_1.useState)(3);
@@ -67,6 +68,6 @@ const FlagMemoryPage = () => {
             console.log(error);
         }
     });
-    return ((0, jsx_runtime_1.jsxs)("div", { children: [(0, jsx_runtime_1.jsx)(Header_1.default, { title: "Flag Memory", subtitle: "Remember as many flags as possible.", icon: (0, jsx_runtime_1.jsx)(fa_1.FaFlagUsa, {}), backgroundColor: "#f8f9fa" }), (0, jsx_runtime_1.jsx)(StatusBar_1.default, { lives: lives, score: score }), (0, jsx_runtime_1.jsx)(Flag_1.default, { countryCode: currentCountryCode }), !gameStarted ? ((0, jsx_runtime_1.jsx)(GameButton_1.default, { text: "start", buttonFunction: () => startGame() })) : ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(GameButton_1.default, { text: "new", buttonFunction: () => handleGuess("new") }), (0, jsx_runtime_1.jsx)(GameButton_1.default, { text: "seen", buttonFunction: () => handleGuess("seen") })] }))] }));
+    return ((0, jsx_runtime_1.jsxs)("div", { className: "h-screen flex flex-col", children: [(0, jsx_runtime_1.jsx)(Header_1.default, { title: "Flag Memory", subtitle: "Remember as many flags as possible.", icon: (0, jsx_runtime_1.jsx)(fa_1.FaFlagUsa, {}), backgroundColor: "#F6FEDB" }), (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col gap-4 mt-10", children: [(0, jsx_runtime_1.jsx)(StatusBar_1.default, { lives: lives, score: score }), (0, jsx_runtime_1.jsx)(Flag_1.default, { countryCode: currentCountryCode }), (0, jsx_runtime_1.jsx)("div", { id: "game-buttons", className: "flex items-center justify-center gap-8 mt-8", children: !gameStarted ? ((0, jsx_runtime_1.jsx)(GameButton_1.default, { text: "start", buttonFunction: () => startGame() })) : ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsx)(GameButton_1.default, { text: "new", buttonFunction: () => handleGuess("new") }), (0, jsx_runtime_1.jsx)(GameButton_1.default, { text: "seen", buttonFunction: () => handleGuess("seen") })] })) })] }), (0, jsx_runtime_1.jsx)("div", { className: "mt-auto", children: (0, jsx_runtime_1.jsx)(Footer_1.default, {}) })] }));
 };
 exports.default = FlagMemoryPage;

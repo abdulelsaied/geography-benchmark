@@ -3,8 +3,9 @@ import GameButton from "../components/GameButton"
 import Header from '../components/Header';
 import StatusBar from '../components/StatusBar';
 import countryApi from "../services/countryApi"
-import { FaFlagUsa } from 'react-icons/fa'; // Example icon
+import { FaFlagUsa } from 'react-icons/fa';     
 import Flag from '../components/Flag';
+import Footer from '../components/Footer';
 
 
 const FlagMemoryPage: React.FC = () => {
@@ -58,28 +59,35 @@ const FlagMemoryPage: React.FC = () => {
     }
 
     return (
-        <div>
+        <div className = "h-screen flex flex-col">
             <Header
                 title = "Flag Memory"
                 subtitle = "Remember as many flags as possible."
                 icon = {<FaFlagUsa />}
-                backgroundColor = "#f8f9fa"
+                backgroundColor = "#F6FEDB"
             />
-            <StatusBar 
-                lives = {lives}
-                score = {score}
-            />
-            <Flag 
-                countryCode = {currentCountryCode}
-            />
-            {!gameStarted ? (
-                <GameButton text = "start" buttonFunction={() => startGame()} />
-            ) : (
-                <>
-                    <GameButton text = "new" buttonFunction={() => handleGuess("new")} />
-                    <GameButton text = "seen" buttonFunction={() => handleGuess("seen")} />
-                </>
-            )}
+            <div className = "flex flex-col gap-4 mt-10">
+                <StatusBar 
+                    lives = {lives}
+                    score = {score}
+                />
+                <Flag 
+                    countryCode = {currentCountryCode}
+                />
+                <div id = "game-buttons" className = "flex items-center justify-center gap-8 mt-8">
+                    {!gameStarted ? (
+                        <GameButton text = "start" buttonFunction={() => startGame()} />
+                    ) : (
+                        <>
+                            <GameButton text = "new" buttonFunction={() => handleGuess("new")} />
+                            <GameButton text = "seen" buttonFunction={() => handleGuess("seen")} />
+                        </>
+                    )}
+                </div>
+            </div>
+            <div className = "mt-auto">
+                <Footer />
+            </div>
         </div>
     );
 };

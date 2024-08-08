@@ -1,4 +1,5 @@
 import './styles/output.css';
+import './styles/tailwind.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import FlagMemoryPage from './pages/FlagMemoryPage';
