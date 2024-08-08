@@ -41,7 +41,7 @@ const countryApi = {
                 throw new Error(`status: ${response.status}`);
             }
             const countryCodeData = yield response.json();
-            return countryCodeData;
+            return countryCodeData.toLowerCase();
         }
         catch (error) {
             console.log(error);

@@ -36,7 +36,7 @@ const countryApi = {
             }
     
             const countryCodeData = await response.json();
-            return countryCodeData;
+            return countryCodeData.toLowerCase();
         }
         catch (error) {
             console.log(error);
