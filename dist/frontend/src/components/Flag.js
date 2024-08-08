@@ -11,14 +11,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
 const react_1 = require("react");
-const flagApi_1 = require("../services/flagApi");
 const Flag = ({ countryCode }) => {
     const [flagUrl, setflagUrl] = (0, react_1.useState)('');
     (0, react_1.useEffect)(() => {
         (() => __awaiter(void 0, void 0, void 0, function* () {
             try {
-                const url = yield (0, flagApi_1.fetchFlag)(countryCode);
-                setflagUrl(url);
+                setflagUrl(`../src/assets/flag-images/${countryCode}.webp`);
             }
             catch (err) {
                 throw new Error(err.message);

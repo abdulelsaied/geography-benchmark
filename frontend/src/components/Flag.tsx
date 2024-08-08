@@ -12,8 +12,7 @@ const Flag: React.FC<FlagProps> = ({countryCode}) => {
     useEffect(() => {
         (async () => {
             try {
-                const url = await fetchFlag(countryCode);
-                setflagUrl(url);
+                setflagUrl(`../src/assets/flag-images/${countryCode}.webp`);
             } catch (err: any) {
                 throw new Error(err.message)
             }
