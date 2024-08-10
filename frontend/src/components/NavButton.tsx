@@ -3,9 +3,10 @@ import React from 'react';
 interface NavButtonProps {
   text: string;
   icon: React.ReactNode;
+  onClick: () => void;
 }
 
-const NavButton: React.FC<NavButtonProps> = ({ text, icon }) => {
+const NavButton: React.FC<NavButtonProps> = ({ text, icon, onClick }) => {
   return (
     <button
       className="
@@ -16,6 +17,7 @@ const NavButton: React.FC<NavButtonProps> = ({ text, icon }) => {
         hover:bg-[#d4a738] hover:translate-y-1 hover:translate-x-1 
         active:translate-y-0 active:translate-x-0 active:shadow-inner
       "
+      onClick = {onClick}
     >
       {icon && <span className="text-4xl">{icon}</span>} {/* Increased icon size */}
       <h1 className="text-lg font-bold mt-auto">{text}</h1> {/* Moved text closer to bottom */}

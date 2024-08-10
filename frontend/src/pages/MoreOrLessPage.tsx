@@ -1,10 +1,14 @@
 import React from 'react'
+import Layout from '../components/Layout';
+
 
 const MoreOrLessPage: React.FC = () => {
     return (
-        <div>
-            more or less
-        </div>
+        <Layout>
+            <div>
+                more or less
+            </div>
+        </Layout>
     )
 }
 

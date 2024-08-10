@@ -1,10 +1,17 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDisclosure } from '@chakra-ui/react';
 import NavButton from './NavButton';
+import HelpModal from './HelpModal';
+import StatsModal from './StatsModal';
+import AboutModal from './AboutModal';
 import { IoMdHelp, IoIosStats, IoIosInformationCircle } from 'react-icons/io';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
+  const { isOpen: isHelpOpen, onOpen: onHelpOpen, onClose: onHelpClose } = useDisclosure();
+  const { isOpen: isStatsOpen, onOpen: onStatsOpen, onClose: onStatsClose } = useDisclosure();
+  const { isOpen: isAboutOpen, onOpen: onAboutOpen, onClose: onAboutClose } = useDisclosure();
 
   return (
     <>
@@ -27,16 +34,22 @@ const Header: React.FC = () => {
         <NavButton 
           text="help"
           icon={<IoMdHelp />}
+          onClick={onHelpOpen}
         />
         <NavButton 
           text="stats"
           icon={<IoIosStats />}
+          onClick={onStatsOpen}
         />
         <NavButton 
           text="about"
           icon={<IoIosInformationCircle />}
+          onClick={onAboutOpen}
         />
       </div>
+      <HelpModal isOpen={isHelpOpen} onClose={onHelpClose} />
+      <StatsModal isOpen={isStatsOpen} onClose={onStatsClose} />
+      <AboutModal isOpen={isAboutOpen} onClose={onAboutClose} />
     </>
   );
 };
