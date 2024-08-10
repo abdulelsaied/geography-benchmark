@@ -2,25 +2,30 @@ import React, { useState } from 'react';
 import GameButton from '../components/GameButton';
 import StatusBar from '../components/StatusBar';
 import Flag from '../components/Flag';
-import NavButton from '../components/NavButton';
 import Layout from '../components/Layout';
 import countryApi from '../services/countryApi';
-import { FaFlagUsa } from 'react-icons/fa';
 
 const FlagMemoryPage: React.FC = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [lives, setLives] = useState<number>(3);
   const [seenCountries, setSeenCountries] = useState<Set<string>>(new Set());
   const [currentCountryCode, setCurrentCountryCode] = useState<string>('eg');
+  const [previousCountryCode, setPreviousCountryCode] = useState<string>("");
   const [score, setScore] = useState<number>(0);
+  const [showTitle, setShowTitle] = useState<boolean>(true);
+  const [showFinalScore, setShowFinalScore] = useState<boolean>(false);
+  const [finalScore, setFinalScore] = useState<number>(0);
 
   const startGame = async () => {
     try {
       const startingCountryCode = await countryApi.fetchRandomCountryCode();
       setCurrentCountryCode(startingCountryCode);
+      setPreviousCountryCode(startingCountryCode);
       setGameStarted(true);
       setLives(3);
       setSeenCountries(new Set());
+      setShowTitle(false);
+      setShowFinalScore(false);
     } catch (error) {
       console.log(error);
     }
@@ -41,16 +46,23 @@ const FlagMemoryPage: React.FC = () => {
       } else {
         if (lives - 1 === 0) {
           setLives(lives - 1);
+          setFinalScore(score);
+          setShowFinalScore(true);
           setScore(0);
           setGameStarted(false);
           return;
         }
         setLives(lives - 1);
       }
-      const nextCountryCode =
-        Math.random() < 0.5 && seenCountries.size > 0
-          ? Array.from(seenCountries)[Math.floor(Math.random() * seenCountries.size)]
-          : await countryApi.fetchRandomCountryCode();
+      let nextCountryCode;
+      do {
+        nextCountryCode =
+          Math.random() < 0.5 && seenCountries.size > 0
+            ? Array.from(seenCountries)[Math.floor(Math.random() * seenCountries.size)]
+            : await countryApi.fetchRandomCountryCode();
+      } while (nextCountryCode === currentCountryCode);
+
+      setPreviousCountryCode(currentCountryCode); 
       setCurrentCountryCode(nextCountryCode);
     } catch (error) {
       console.log(error);
@@ -59,10 +71,18 @@ const FlagMemoryPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col gap-4 mt-10">
-        <StatusBar lives={lives} score={score} />
+      <div className="flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-8 pb-4 text-center">
+        {showTitle && !showFinalScore ? 
+           ( <div>
+                <h1 className = "text-2xl font-bold">Flag Memory</h1> 
+                <p className = "text-xl">remember as many flags as possible.</p>
+            </div> 
+           ) : showFinalScore ? 
+           ( <h1 className = "text-2xl font-bold">Final Score: {finalScore}</h1> ) :
+           ( <StatusBar lives={lives} score={score} /> )
+        }
         <Flag countryCode={currentCountryCode} />
-        <div id="game-buttons" className="flex items-center justify-center gap-8 mt-8">
+        <div id="game-buttons" className="flex items-center justify-center gap-6">
           {!gameStarted ? (
             <GameButton text="start" buttonFunction={() => startGame()} />
           ) : (

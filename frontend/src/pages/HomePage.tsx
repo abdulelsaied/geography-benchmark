@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaGlobe, FaFlag } from 'react-icons/fa';
+import { FaFlag } from 'react-icons/fa';
 import { FaArrowDownUpAcrossLine } from 'react-icons/fa6';
 import MenuCard from '../components/MenuCard';
 import Layout from '../components/Layout';

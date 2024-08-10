@@ -9,13 +9,13 @@ interface LayoutProps {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="h-screen flex flex-col">
-      <header className="flex justify-between h-[15vh] mt-[5vh] w-4/5 mx-auto border-b-2 border-white">
+      <header className="flex justify-between h-[15vh] mt-[5vh] w-4/5 mx-auto border-b-4 border-white">
         <Header />
       </header>
-      <main className="flex-1 w-4/5 mx-auto flex flex-col justify-center items-center gap-12 border-b-2 border-white overflow-auto">
+      <main className="flex-1 w-4/5 mx-auto flex flex-col justify-center items-center gap-12 overflow-auto">
         {children}
       </main>
-      <footer className="h-[10vh] w-4/5 mx-auto border-t-2 border-white">
+      <footer className="h-[10vh] w-4/5 mx-auto border-t-4 border-white">
         <Footer />
       </footer>
     </div>
