@@ -15,37 +15,34 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <div 
-        className="flex flex-row text-white pr-4 items-end mb-2"
-      >
-        <div 
-            className="pl-4 pr-4 border-r-2 border-white cursor-pointer"
-            onClick={() => navigate('/')} // Navigate to home page on click
-        >
-          <h1 className="text-4xl font-bold">GE🌎GRAPHY</h1>
-          <h1 className="text-4xl font-bold">BENCHMARK</h1>
+      <div className="flex flex-row w-full justify-between pr-4 items-end mb-2">
+        <div className = "flex flex-row items-end text-white">
+          <div className="pl-4 pr-4 border-r-2 border-white cursor-pointer" onClick={() => navigate('/')}> 
+            <h1 className="text-4xl font-bold">GE🌎GRAPHY</h1>
+            <h1 className="text-4xl font-bold">BENCHMARK</h1>
+          </div>
+          <div className="ml-4">
+            <h4 className="text-xl">test your geo skills</h4>
+            <h4 className="text-xl">inspired by HumanBenchmark</h4>
+          </div>
         </div>
-        <div className="ml-4">
-          <h4 className="text-xl">test your geo skills</h4>
-          <h4 className="text-xl">inspired by HumanBenchmark</h4>
+        <div className="flex flex-row items-end gap-x-4">
+          <NavButton 
+            text="help"
+            icon={<IoMdHelp />}
+            onClick={onHelpOpen}
+          />
+          <NavButton 
+            text="stats"
+            icon={<IoIosStats />}
+            onClick={onStatsOpen}
+          />
+          <NavButton 
+            text="about"
+            icon={<IoIosInformationCircle />}
+            onClick={onAboutOpen}
+          />
         </div>
-      </div>
-      <div className="flex flex-row">
-        <NavButton 
-          text="help"
-          icon={<IoMdHelp />}
-          onClick={onHelpOpen}
-        />
-        <NavButton 
-          text="stats"
-          icon={<IoIosStats />}
-          onClick={onStatsOpen}
-        />
-        <NavButton 
-          text="about"
-          icon={<IoIosInformationCircle />}
-          onClick={onAboutOpen}
-        />
       </div>
       <HelpModal isOpen={isHelpOpen} onClose={onHelpClose} />
       <StatsModal isOpen={isStatsOpen} onClose={onStatsClose} />

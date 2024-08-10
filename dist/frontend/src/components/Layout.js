@@ -7,6 +7,6 @@ const jsx_runtime_1 = require("react/jsx-runtime");
 const Header_1 = __importDefault(require("./Header"));
 const Footer_1 = __importDefault(require("./Footer"));
 const Layout = ({ children }) => {
-    return ((0, jsx_runtime_1.jsxs)("div", { className: "h-screen flex flex-col", children: [(0, jsx_runtime_1.jsx)("header", { className: "flex justify-between h-[15vh] mt-[5vh] w-4/5 mx-auto border-b-4 border-white", children: (0, jsx_runtime_1.jsx)(Header_1.default, {}) }), (0, jsx_runtime_1.jsx)("main", { className: "flex-1 w-4/5 mx-auto flex flex-col justify-center items-center gap-12 overflow-auto", children: children }), (0, jsx_runtime_1.jsx)("footer", { className: "h-[10vh] w-4/5 mx-auto border-t-4 border-white", children: (0, jsx_runtime_1.jsx)(Footer_1.default, {}) })] }));
+    return ((0, jsx_runtime_1.jsxs)("div", { className: "h-screen flex flex-col", children: [(0, jsx_runtime_1.jsx)("header", { className: "flex h-[15vh] mt-[5vh] w-4/5 mx-auto border-b-4 border-white", children: (0, jsx_runtime_1.jsx)(Header_1.default, {}) }), (0, jsx_runtime_1.jsx)("main", { className: "flex-1 w-4/5 mx-auto flex flex-col justify-center items-center gap-12 overflow-auto", children: children }), (0, jsx_runtime_1.jsx)("footer", { className: "h-[10vh] w-4/5 mx-auto border-t-4 border-white", children: (0, jsx_runtime_1.jsx)(Footer_1.default, {}) })] }));
 };
 exports.default = Layout;
