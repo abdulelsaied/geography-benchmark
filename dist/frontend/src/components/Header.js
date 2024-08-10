@@ -1,7 +1,12 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsx_runtime_1 = require("react/jsx-runtime");
-const Header = ({ title, subtitle, icon, backgroundColor }) => {
-    return ((0, jsx_runtime_1.jsx)("header", { className: "h-1/4", style: { backgroundColor: backgroundColor }, children: (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-col items-center justify-center h-full text-center", children: [icon && (0, jsx_runtime_1.jsx)("span", { className: "text-3xl mb-2", children: icon }), (0, jsx_runtime_1.jsx)("h1", { className: "text-3xl font-bold mb-1", children: title }), subtitle && (0, jsx_runtime_1.jsx)("h2", { className: "text-lg text-gray-600", children: subtitle })] }) }));
+const NavButton_1 = __importDefault(require("./NavButton"));
+const io_1 = require("react-icons/io");
+const Header = () => {
+    return ((0, jsx_runtime_1.jsxs)(jsx_runtime_1.Fragment, { children: [(0, jsx_runtime_1.jsxs)("div", { className: "flex flex-row text-white pr-4 items-end mb-2", children: [(0, jsx_runtime_1.jsxs)("div", { className: "pl-4 pr-4 border-r-2 border-white", children: [(0, jsx_runtime_1.jsx)("h1", { className: "text-4xl font-bold", children: "GE\uD83C\uDF0EGRAPHY" }), (0, jsx_runtime_1.jsx)("h1", { className: "text-4xl font-bold", children: "BENCHMARK" })] }), (0, jsx_runtime_1.jsxs)("div", { className: "ml-4", children: [(0, jsx_runtime_1.jsx)("h4", { className: "text-xl", children: "test your geo skills" }), (0, jsx_runtime_1.jsx)("h4", { className: "text-xl", children: "inspired by HumanBenchmark" })] })] }), (0, jsx_runtime_1.jsxs)("div", { className: "flex flex-row ", children: [(0, jsx_runtime_1.jsx)(NavButton_1.default, { text: "help", icon: (0, jsx_runtime_1.jsx)(io_1.IoMdHelp, {}) }), (0, jsx_runtime_1.jsx)(NavButton_1.default, { text: "stats", icon: (0, jsx_runtime_1.jsx)(io_1.IoIosStats, {}) }), (0, jsx_runtime_1.jsx)(NavButton_1.default, { text: "about", icon: (0, jsx_runtime_1.jsx)(io_1.IoIosInformationCircle, {}) })] })] }));
 };
 exports.default = Header;

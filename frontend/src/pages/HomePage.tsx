@@ -1,21 +1,27 @@
-import React from 'react'
-import Header from '../components/Header';
-import { FaGlobe } from 'react-icons/fa';
-import Footer from '../components/Footer';
+import React from 'react';
+import { FaGlobe, FaFlag } from 'react-icons/fa';
+import { FaArrowDownUpAcrossLine } from 'react-icons/fa6';
+import MenuCard from '../components/MenuCard';
+import Layout from '../components/Layout';
 
 const HomePage: React.FC = () => {
   return (
-    <div className = "h-screen flex flex-col">
-        <><Header
-            title = "Geography Benchmark"
-            subtitle = "Test your geo skills with mini games"
-            icon = {<FaGlobe />}
-            backgroundColor = "#F6FEDB"
-        /></>
-        <div className = "mt-auto">
-            <Footer />
-        </div>
-    </div>
+    <Layout>
+      <div className="flex gap-12">
+        <MenuCard
+          title="Flag Memory"
+          subtitle="Remember as many flags as possible"
+          icon={<FaFlag />}
+          to="/flag-memory"
+        />
+        <MenuCard
+          title="More or Less"
+          subtitle="Choose the country with the higher statistic"
+          icon={<FaArrowDownUpAcrossLine />}
+          to="/more-or-less"
+        />
+      </div>
+    </Layout>
   );
 };
 
