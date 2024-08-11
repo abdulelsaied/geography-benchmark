@@ -11,7 +11,7 @@ const Flag: React.FC<FlagProps> = ({countryCode}) => {
     useEffect(() => {
         (async () => {
             try {
-                setflagUrl(`../src/assets/flag-images/${countryCode}.webp`);
+                setflagUrl(`./flag-images/${countryCode}.webp`);
             } catch (err: any) {
                 throw new Error(err.message)
             }
