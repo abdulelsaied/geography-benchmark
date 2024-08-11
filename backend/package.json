@@ -2,13 +2,13 @@
   "name": "geography-benchmark",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "dist/app.js",
   "scripts": {
     "build": "rimraf dist && npx tsc",
     "prestart": "npm run build",
-    "start": "node dist/app.js",
+    "start": "node backend/dist/app.js",
     "preserve": "npm run build",
-    "serve": "concurrently \"npx tsc -w\" \"nodemon dist/app.js\""
+    "serve": "concurrently \"npx tsc -w\" \"nodemon backend/dist/app.js\""
   },
   "keywords": [],
   "author": "",
