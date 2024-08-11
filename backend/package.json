@@ -8,7 +8,8 @@
     "prestart": "npm run build",
     "start": "node backend/dist/app.js",
     "preserve": "npm run build",
-    "serve": "concurrently \"npx tsc -w\" \"nodemon backend/dist/app.js\""
+    "serve": "concurrently \"npx tsc -w\" \"nodemon backend/dist/app.js\"",
+    "vercel-build": "echo hello"
   },
   "keywords": [],
   "author": "",
@@ -29,7 +30,8 @@
     "postcss": "^8.4.35",
     "postcss-cli": "^11.0.0",
     "rimraf": "^5.0.5",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "vercel": "^35.2.4"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
