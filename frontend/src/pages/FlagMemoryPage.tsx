@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import GameButton from '../components/GameButton';
 import StatusBar from '../components/StatusBar';
 import Flag from '../components/Flag';
@@ -15,6 +15,15 @@ const FlagMemoryPage: React.FC = () => {
   const [showTitle, setShowTitle] = useState<boolean>(true);
   const [showFinalScore, setShowFinalScore] = useState<boolean>(false);
   const [finalScore, setFinalScore] = useState<number>(0);
+  const [shake, setShake] = useState<boolean>(false); // For shaking effect
+  const [flash, setFlash] = useState<boolean>(false); // For flashing effect
+
+  useEffect(() => {
+    if (flash) {
+      const timer = setTimeout(() => setFlash(false), 500); // Duration of the flash
+      return () => clearTimeout(timer); // Clean up timer
+    }
+  }, [flash]);
 
   const startGame = async () => {
     try {
@@ -43,6 +52,8 @@ const FlagMemoryPage: React.FC = () => {
           setSeenCountries(new Set(seenCountries));
         }
         setScore(score + 1);
+        setFlash(true); // Trigger flash on correct guess
+        setShake(false); // Reset shake on correct guess
       } else {
         if (lives - 1 === 0) {
           setLives(lives - 1);
@@ -53,7 +64,9 @@ const FlagMemoryPage: React.FC = () => {
           return;
         }
         setLives(lives - 1);
+        setShake(true); // Trigger shake on wrong guess
       }
+      
       let nextCountryCode;
       do {
         nextCountryCode =
@@ -64,6 +77,16 @@ const FlagMemoryPage: React.FC = () => {
 
       setPreviousCountryCode(currentCountryCode); 
       setCurrentCountryCode(nextCountryCode);
+
+      // Remove the shake effect after animation completes
+      if (shake) {
+        setTimeout(() => setShake(false), 500); // Duration of the shake animation
+      }
+
+      // Remove the flash effect after animation completes
+      if (flash) {
+        setTimeout(() => setFlash(false), 500); // Duration of the flash animation
+      }
     } catch (error) {
       console.log(error);
     }
@@ -71,15 +94,21 @@ const FlagMemoryPage: React.FC = () => {
 
   return (
     <Layout>
-      <div className="flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-8 pb-4 text-center">
+      <div className={`flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-8 pb-4 text-center ${shake ? 'shake' : ''}`}>
         {showTitle && !showFinalScore ? 
            ( <div>
-                <h1 className = "text-2xl font-bold">Flag Memory</h1> 
-                <p className = "text-xl">remember as many flags as possible.</p>
+                <h1 className="text-2xl font-bold">Flag Memory</h1> 
+                <p className="text-xl">remember as many flags as possible.</p>
             </div> 
            ) : showFinalScore ? 
-           ( <h1 className = "text-2xl font-bold">Final Score: {finalScore}</h1> ) :
-           ( <StatusBar lives={lives} score={score} /> )
+           ( <h1 className="text-2xl font-bold">Final Score: {finalScore}</h1> ) :
+           ( 
+             <StatusBar 
+               lives={lives} 
+               score={score} 
+               flash={flash} 
+             />
+           )
         }
         <Flag countryCode={currentCountryCode} />
         <div id="game-buttons" className="flex items-center justify-center gap-6">

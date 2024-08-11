@@ -4,9 +4,10 @@ import { FaHeart } from 'react-icons/fa';
 interface StatusBarProps {
     lives: number;
     score: number;
+    flash?: boolean;
 }
 
-const StatusBar: React.FC<StatusBarProps> = ({ lives, score }) => {
+const StatusBar: React.FC<StatusBarProps> = ({ lives, score, flash }) => {
     // Set the number of hearts to display as 3 in this case
     const maxHearts = 3;
 
@@ -19,16 +20,17 @@ const StatusBar: React.FC<StatusBarProps> = ({ lives, score }) => {
                         <FaHeart
                             key={index}
                             className={`text-2xl ${
-                                index < lives ? 'text-black' : 'text-gray-400'
+                                index < lives ? 'text-red-600' : 'text-red-300'
                             }`}
                         />
                     ))}
                 </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="relative flex items-center space-x-2">
                 <span className="font-bold text-2xl">Score |</span>
-                <span className="text-2xl">{score}</span>
+                <span className={`score ${flash ? 'flash-green' : ''} text-2xl`}>{score}</span>
+                {flash && <span className = "absolute top-0 right-[-20px] flash-green ml-2">+1</span>}
             </div>
         </div>
     );

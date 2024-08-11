@@ -4,3 +4,25 @@ body {
     margin: 0 !important;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
   }
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes flash-green {
+  0% { color: inherit; }
+  50% { color: green; }
+  100% { color: inherit; }
+}
+
+.flash-green {
+  animation: flash-green 0.5s ease-in-out;
+}

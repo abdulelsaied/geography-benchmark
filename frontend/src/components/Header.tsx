@@ -28,17 +28,17 @@ const Header: React.FC = () => {
         </div>
         <div className="flex flex-row items-end gap-x-4">
           <NavButton 
-            text="help"
+            text="Help"
             icon={<IoMdHelp />}
             onClick={onHelpOpen}
           />
           <NavButton 
-            text="stats"
+            text="Stats"
             icon={<IoIosStats />}
             onClick={onStatsOpen}
           />
           <NavButton 
-            text="about"
+            text="About"
             icon={<IoIosInformationCircle />}
             onClick={onAboutOpen}
           />
