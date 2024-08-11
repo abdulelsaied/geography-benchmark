@@ -1,4 +1,4 @@
-const COUNTRY_API_BASE_URL = "http://localhost:8000/country";
+const COUNTRY_API_BASE_URL = "https://geography-benchmark.vercel.app/country";
 
 const countryApi = {
     fetchRandomCountry: async () => {
