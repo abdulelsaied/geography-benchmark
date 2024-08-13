@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import countryRouter from "./routes/country";
+import scoresRouter from "./routes/scores";
 
 const port = 8000;
 
@@ -14,6 +15,7 @@ app.use(cors({
 }))
 
 app.use("/country", countryRouter);
+app.use("/scores", scoresRouter);
 
 app.set("view engine", "ejs");
 
