@@ -4,6 +4,8 @@ import StatusBar from '../components/StatusBar';
 import Flag from '../components/Flag';
 import Layout from '../components/Layout';
 import countryApi from '../services/countryApi';
+import { saveHighScore, getHighScore } from '../utils/highScores'; 
+
 
 const FlagMemoryPage: React.FC = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
@@ -55,6 +57,7 @@ const FlagMemoryPage: React.FC = () => {
         setFlash(true); // Trigger flash on correct guess
       } else {
         if (lives - 1 === 0) {
+          saveHighScore('flag-memory', score);  
           setLives(lives - 1);
           setFinalScore(score);
           setShowFinalScore(true);
@@ -94,7 +97,10 @@ const FlagMemoryPage: React.FC = () => {
                 <p className="text-xl">remember as many flags as possible.</p>
             </div> 
            ) : showFinalScore ? 
-           ( <h1 className="text-2xl font-bold">Final Score: {finalScore}</h1> ) :
+           ( <div>
+              <h1 className="text-2xl font-bold">Final Score: {finalScore}</h1>
+              <h1 className="text-2xl font-bold">High Score: {getHighScore('flag-memory')}</h1> 
+             </div>) :
            ( 
              <StatusBar 
                lives={lives} 
