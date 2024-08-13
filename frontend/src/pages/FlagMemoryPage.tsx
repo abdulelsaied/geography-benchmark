@@ -45,7 +45,7 @@ const FlagMemoryPage: React.FC = () => {
       const isGuessCorrect =
         (guess === 'seen' && seenCountries.has(currentCountryCode)) ||
         (guess === 'new' && !seenCountries.has(currentCountryCode));
-
+  
       if (isGuessCorrect) {
         if (!seenCountries.has(currentCountryCode)) {
           seenCountries.add(currentCountryCode);
@@ -53,7 +53,6 @@ const FlagMemoryPage: React.FC = () => {
         }
         setScore(score + 1);
         setFlash(true); // Trigger flash on correct guess
-        setShake(false); // Reset shake on correct guess
       } else {
         if (lives - 1 === 0) {
           setLives(lives - 1);
@@ -65,6 +64,8 @@ const FlagMemoryPage: React.FC = () => {
         }
         setLives(lives - 1);
         setShake(true); // Trigger shake on wrong guess
+        // Remove shake effect after animation completes
+        setTimeout(() => setShake(false), 500); // Match duration with shake animation
       }
       
       let nextCountryCode;
@@ -74,23 +75,15 @@ const FlagMemoryPage: React.FC = () => {
             ? Array.from(seenCountries)[Math.floor(Math.random() * seenCountries.size)]
             : await countryApi.fetchRandomCountryCode();
       } while (nextCountryCode === currentCountryCode);
-
+  
       setPreviousCountryCode(currentCountryCode); 
       setCurrentCountryCode(nextCountryCode);
-
-      // Remove the shake effect after animation completes
-      if (shake) {
-        setTimeout(() => setShake(false), 500); // Duration of the shake animation
-      }
-
-      // Remove the flash effect after animation completes
-      if (flash) {
-        setTimeout(() => setFlash(false), 500); // Duration of the flash animation
-      }
+  
     } catch (error) {
       console.log(error);
     }
   };
+  
 
   return (
     <Layout>

@@ -19,8 +19,8 @@ const NavButton: React.FC<NavButtonProps> = ({ text, icon, onClick }) => {
       "
       onClick = {onClick}
     >
-      {icon && <span className="text-4xl">{icon}</span>} {/* Increased icon size */}
-      <h1 className="text-lg font-bold mt-auto">{text}</h1> {/* Moved text closer to bottom */}
+      {icon && <span className="text-4xl">{icon}</span>} 
+      <h1 className="text-lg font-bold mt-auto">{text}</h1> 
     </button>
   );
 };

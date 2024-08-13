@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@chakra-ui/react';
 import NavButton from './NavButton';
-import HelpModal from './HelpModal';
 import StatsModal from './StatsModal';
 import AboutModal from './AboutModal';
 import { IoMdHelp, IoIosStats, IoIosInformationCircle } from 'react-icons/io';
@@ -28,11 +27,6 @@ const Header: React.FC = () => {
         </div>
         <div className="flex flex-row items-end gap-x-4">
           <NavButton 
-            text="Help"
-            icon={<IoMdHelp />}
-            onClick={onHelpOpen}
-          />
-          <NavButton 
             text="Stats"
             icon={<IoIosStats />}
             onClick={onStatsOpen}
@@ -44,7 +38,6 @@ const Header: React.FC = () => {
           />
         </div>
       </div>
-      <HelpModal isOpen={isHelpOpen} onClose={onHelpClose} />
       <StatsModal isOpen={isStatsOpen} onClose={onStatsClose} />
       <AboutModal isOpen={isAboutOpen} onClose={onAboutClose} />
     </>
