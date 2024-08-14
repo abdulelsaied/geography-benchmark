@@ -118,7 +118,7 @@ const FlagMemoryPage: React.FC = () => {
   return (
     <Layout>
       <div 
-        className={`flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-4 md:p-8 pb-4 text-center ${shake ? 'shake' : ''}`}
+        className={`flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-4 md:p-8 text-center ${shake ? 'shake' : ''}`}
       >
         {showTitle && !showFinalScore ? 
            ( <div>
@@ -126,9 +126,9 @@ const FlagMemoryPage: React.FC = () => {
                 <p className="text-base sm:text-lg md:text-xl">remember as many flags as possible.</p>
             </div> 
            ) : showFinalScore ? 
-           ( <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-x-4">
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Final Score: {finalScore}</h1>
-              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">High Score: {getHighScore('flag-memory')}</h1> 
+           ( <div className="flex items-center justify-center gap-x-2 md:gap-x-4">
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold">Final Score: {finalScore}</h1>
+              <h1 className="text-lg sm:text-xl md:text-2xl font-bold">High Score: {getHighScore('flag-memory')}</h1> 
              </div>) :
            ( 
              <StatusBar 

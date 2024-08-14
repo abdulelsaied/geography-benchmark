@@ -8,18 +8,17 @@ interface StatusBarProps {
 }
 
 const StatusBar: React.FC<StatusBarProps> = ({ lives, score, flash }) => {
-    // Set the number of hearts to display as 3 in this case
     const maxHearts = 3;
 
     return (
         <div className="flex flex-row items-center justify-center space-x-6 p-2">
             <div className="flex items-center space-x-2">
-                <span className="font-bold text-2xl">Lives |</span>
+                <span className="font-bold text-lg sm:text-2xl">Lives |</span>
                 <div className="flex flex-row items-center space-x-2">
                     {[...Array(maxHearts)].map((_, index) => (
                         <FaHeart
                             key={index}
-                            className={`text-2xl ${
+                            className={`text-lg sm:text-2xl ${
                                 index < lives ? 'text-red-600' : 'text-red-300'
                             }`}
                         />
@@ -28,8 +27,8 @@ const StatusBar: React.FC<StatusBarProps> = ({ lives, score, flash }) => {
             </div>
 
             <div className="relative flex items-center space-x-2">
-                <span className="font-bold text-2xl">Score |</span>
-                <span className={`score ${flash ? 'flash-green' : ''} text-2xl`}>{score}</span>
+                <span className="font-bold text-lg sm:text-2xl">Score |</span>
+                <span className={`score ${flash ? 'flash-green' : ''} text-lg sm:text-2xl`}>{score}</span>
                 {flash && <span className = "absolute top-0 right-[-20px] flash-green ml-2">+1</span>}
             </div>
         </div>
