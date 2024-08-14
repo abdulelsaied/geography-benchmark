@@ -12,7 +12,7 @@ const StatsModal: React.FC<StatsModalProps> = ({ isOpen, onClose }) => {
   const [selectedGame, setSelectedGame] = useState<'flag-memory' | 'more-or-less'>('flag-memory');
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
+    <Modal isOpen={isOpen} onClose={onClose} size={{ base: 'sm', md: 'md', lg: 'lg' }} isCentered>
       <ModalOverlay />
       <ModalContent className="modal-center" alignItems="center" justifyContent="center">
         <ModalHeader>Stats</ModalHeader>
