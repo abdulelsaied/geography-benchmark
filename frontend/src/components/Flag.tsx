@@ -24,7 +24,7 @@ const Flag: React.FC<FlagProps> = ({countryCode}) => {
         }
     }, [countryCode])
     return (
-        <div className="w-[380px] h-[253px] border-4 border-black overflow-hidden flex items-center justify-center">
+        <div className="w-[300px] h-[200px] md:w-[380px] md:h-[253px] border-4 border-black overflow-hidden flex items-center justify-center">
             <img 
                 src={flagUrl} 
                 alt={`Flag of ${countryCode}`} 

@@ -22,10 +22,10 @@ const FlagMemoryPage: React.FC = () => {
   const [shake, setShake] = useState<boolean>(false); 
   const [flash, setFlash] = useState<boolean>(false); 
   const [histogramData, setHistogramData] = useState<number[]>([]); 
+  const [width, setWidth] = useState<number>(300);
+  const [height, setHeight] = useState<number>(200);
 
   const { gameData, loading } = useScores();
-
-
 
   useEffect(() => {
     if (flash) {
@@ -39,6 +39,21 @@ const FlagMemoryPage: React.FC = () => {
       setHistogramData(gameData['flag-memory']);
     }
   }, [showFinalScore, gameData]);
+
+  useEffect(() => {
+    const updateDimensions = () => {
+      if (window.innerWidth >= 768) {
+        setWidth(380);
+        setHeight(253);
+      } else {
+        setWidth(300);
+        setHeight(200);
+      }
+    };
+    updateDimensions();
+    window.addEventListener('resize', updateDimensions);
+    return () => window.removeEventListener('resize', updateDimensions);
+  }, []);
 
   const startGame = async () => {
     try {
@@ -99,20 +114,21 @@ const FlagMemoryPage: React.FC = () => {
       console.log(error);
     }
   };
-  
 
   return (
     <Layout>
-      <div className={`flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-8 pb-4 text-center ${shake ? 'shake' : ''}`}>
+      <div 
+        className={`flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-4 md:p-8 pb-4 text-center ${shake ? 'shake' : ''}`}
+      >
         {showTitle && !showFinalScore ? 
            ( <div>
-                <h1 className="text-2xl font-bold">Flag Memory</h1> 
-                <p className="text-xl">remember as many flags as possible.</p>
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Flag Memory</h1> 
+                <p className="text-base sm:text-lg md:text-xl">remember as many flags as possible.</p>
             </div> 
            ) : showFinalScore ? 
-           ( <div className = "flex items-center justify-center gap-x-4">
-              <h1 className="text-2xl font-bold">Final Score: {finalScore}</h1>
-              <h1 className="text-2xl font-bold">High Score: {getHighScore('flag-memory')}</h1> 
+           ( <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-x-4">
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Final Score: {finalScore}</h1>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">High Score: {getHighScore('flag-memory')}</h1> 
              </div>) :
            ( 
              <StatusBar 
@@ -122,18 +138,18 @@ const FlagMemoryPage: React.FC = () => {
              />
            )
         }
-        <div className="w-[380px] h-[253px] bg-gray-200">
+        <div className="w-[300px] h-[200px] md:w-[380px] md:h-[253px] bg-gray-200 mx-auto">
           {showFinalScore ? (
             <Histogram
-              width={380} 
-              height={253} 
+              width={width} 
+              height={height} 
               data={histogramData}
             />
           ) : (
             <Flag countryCode={currentCountryCode} />
           )}
         </div>
-        <div id="game-buttons" className="flex items-center justify-center gap-6">
+        <div id="game-buttons" className="flex md:flex-row items-center justify-center gap-4 md:gap-6">
           {!gameStarted ? (
             <GameButton text="start" buttonFunction={() => startGame()} />
           ) : (
