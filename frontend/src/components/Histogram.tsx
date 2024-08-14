@@ -69,7 +69,7 @@ export const Histogram = ({ width, height, data }: HistogramProps) => {
   });
 
   return (
-    <svg width={width} height={height}>
+    <svg className = "border-4 border-black" width={width} height={height}>
       <g
         width={boundsWidth}
         height={boundsHeight}

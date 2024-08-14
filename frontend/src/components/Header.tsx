@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDisclosure } from '@chakra-ui/react';
 import NavButton from './NavButton';
 import StatsModal from './StatsModal';
 import AboutModal from './AboutModal';
-import { IoMdHelp, IoIosStats, IoIosInformationCircle } from 'react-icons/io';
+import { IoIosStats, IoIosInformationCircle } from 'react-icons/io';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
-  const { isOpen: isHelpOpen, onOpen: onHelpOpen, onClose: onHelpClose } = useDisclosure();
   const { isOpen: isStatsOpen, onOpen: onStatsOpen, onClose: onStatsClose } = useDisclosure();
   const { isOpen: isAboutOpen, onOpen: onAboutOpen, onClose: onAboutClose } = useDisclosure();
 

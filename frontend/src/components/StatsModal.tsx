@@ -9,7 +9,7 @@ interface StatsModalProps {
 }
 
 const StatsModal: React.FC<StatsModalProps> = ({ isOpen, onClose }) => {
-  const [selectedGame, setSelectedGame] = useState<'flagMemory' | 'moreOrLess'>('flagMemory');
+  const [selectedGame, setSelectedGame] = useState<'flag-memory' | 'more-or-less'>('flag-memory');
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="lg" isCentered>
@@ -22,13 +22,13 @@ const StatsModal: React.FC<StatsModalProps> = ({ isOpen, onClose }) => {
             <div className="flex gap-4 mb-4">
               <GameButton 
                 text="Flag Memory" 
-                buttonFunction={() => setSelectedGame('flagMemory')} 
-                selected={selectedGame === "flagMemory"}
+                buttonFunction={() => setSelectedGame('flag-memory')} 
+                selected={selectedGame === "flag-memory"}
               />
               <GameButton 
                 text="More or Less" 
-                buttonFunction={() => setSelectedGame('moreOrLess')} 
-                selected={selectedGame === "moreOrLess"}
+                buttonFunction={() => setSelectedGame('more-or-less')} 
+                selected={selectedGame === "more-or-less"}
               />
             </div>
             <div className="w-[400px] h-[300px] border-4 border-black bg-gray-200 flex items-center justify-center">

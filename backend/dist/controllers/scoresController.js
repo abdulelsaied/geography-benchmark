@@ -21,9 +21,25 @@ const scoresController = {
                 console.log('Game title and score are required.');
             }
             yield scoresModel_1.default.addScore(game_title, score);
+            res.status(200).json({ message: 'Added score to database!' });
         }
         catch (error) {
             console.log(error);
+        }
+    }),
+    getScores: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+        try {
+            const game_title = req.query.game_title;
+            if (!game_title) {
+                res.status(400).json({ error: 'Game title is required' });
+                return;
+            }
+            const scores = yield scoresModel_1.default.getScores(game_title);
+            res.json(scores);
+        }
+        catch (error) {
+            console.log(error);
+            res.status(500).json({ error: 'Internal Server Error' });
         }
     })
 };

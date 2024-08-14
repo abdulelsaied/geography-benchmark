@@ -9,12 +9,12 @@ const country_1 = __importDefault(require("./routes/country"));
 const scores_1 = __importDefault(require("./routes/scores"));
 const port = 8000;
 const app = (0, express_1.default)();
-app.use(express_1.default.json());
 app.use((0, cors_1.default)({
     origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+app.use(express_1.default.json());
 app.use("/country", country_1.default);
 app.use("/scores", scores_1.default);
 app.set("view engine", "ejs");

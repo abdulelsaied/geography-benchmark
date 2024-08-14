@@ -6,11 +6,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import FlagMemoryPage from './pages/FlagMemoryPage';
 import MoreOrLessPage from './pages/MoreOrLessPage';
-
+import { ScoresProvider } from './context/ScoresProvider';
 
 function App() {
   return (
-    <div>
+    <ScoresProvider>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -18,7 +18,7 @@ function App() {
           <Route path="/more-or-less" element={<MoreOrLessPage />} />
         </Routes>
       </Router>
-    </div>
+    </ScoresProvider>
   );
 }
 

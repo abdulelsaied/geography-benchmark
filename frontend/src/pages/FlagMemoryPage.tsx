@@ -4,8 +4,10 @@ import StatusBar from '../components/StatusBar';
 import Flag from '../components/Flag';
 import Layout from '../components/Layout';
 import countryApi from '../services/countryApi';
+import scoresApi from '../services/scoresApi';
 import { saveHighScore, getHighScore } from '../utils/highScores'; 
-
+import { useScores } from '../context/useScores'; 
+import { Histogram } from '../components/Histogram';
 
 const FlagMemoryPage: React.FC = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
@@ -17,15 +19,26 @@ const FlagMemoryPage: React.FC = () => {
   const [showTitle, setShowTitle] = useState<boolean>(true);
   const [showFinalScore, setShowFinalScore] = useState<boolean>(false);
   const [finalScore, setFinalScore] = useState<number>(0);
-  const [shake, setShake] = useState<boolean>(false); // For shaking effect
-  const [flash, setFlash] = useState<boolean>(false); // For flashing effect
+  const [shake, setShake] = useState<boolean>(false); 
+  const [flash, setFlash] = useState<boolean>(false); 
+  const [histogramData, setHistogramData] = useState<number[]>([]); 
+
+  const { gameData, loading } = useScores();
+
+
 
   useEffect(() => {
     if (flash) {
-      const timer = setTimeout(() => setFlash(false), 500); // Duration of the flash
-      return () => clearTimeout(timer); // Clean up timer
+      const timer = setTimeout(() => setFlash(false), 500); 
+      return () => clearTimeout(timer);
     }
   }, [flash]);
+
+  useEffect(() => {
+    if (showFinalScore && gameData['flag-memory']) {
+      setHistogramData(gameData['flag-memory']);
+    }
+  }, [showFinalScore, gameData]);
 
   const startGame = async () => {
     try {
@@ -54,9 +67,10 @@ const FlagMemoryPage: React.FC = () => {
           setSeenCountries(new Set(seenCountries));
         }
         setScore(score + 1);
-        setFlash(true); // Trigger flash on correct guess
+        setFlash(true);
       } else {
         if (lives - 1 === 0) {
+          scoresApi.addScore('flag-memory', score);
           saveHighScore('flag-memory', score);  
           setLives(lives - 1);
           setFinalScore(score);
@@ -66,9 +80,8 @@ const FlagMemoryPage: React.FC = () => {
           return;
         }
         setLives(lives - 1);
-        setShake(true); // Trigger shake on wrong guess
-        // Remove shake effect after animation completes
-        setTimeout(() => setShake(false), 500); // Match duration with shake animation
+        setShake(true);
+        setTimeout(() => setShake(false), 500); 
       }
       
       let nextCountryCode;
@@ -97,7 +110,7 @@ const FlagMemoryPage: React.FC = () => {
                 <p className="text-xl">remember as many flags as possible.</p>
             </div> 
            ) : showFinalScore ? 
-           ( <div>
+           ( <div className = "flex items-center justify-center gap-x-4">
               <h1 className="text-2xl font-bold">Final Score: {finalScore}</h1>
               <h1 className="text-2xl font-bold">High Score: {getHighScore('flag-memory')}</h1> 
              </div>) :
@@ -109,7 +122,17 @@ const FlagMemoryPage: React.FC = () => {
              />
            )
         }
-        <Flag countryCode={currentCountryCode} />
+        <div className="w-[380px] h-[253px] bg-gray-200">
+          {showFinalScore ? (
+            <Histogram
+              width={380} 
+              height={253} 
+              data={histogramData}
+            />
+          ) : (
+            <Flag countryCode={currentCountryCode} />
+          )}
+        </div>
         <div id="game-buttons" className="flex items-center justify-center gap-6">
           {!gameStarted ? (
             <GameButton text="start" buttonFunction={() => startGame()} />

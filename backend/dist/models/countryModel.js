@@ -18,7 +18,6 @@ class CountryModel {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const result = yield database_1.default.query('SELECT country_code FROM Country ORDER BY RANDOM() LIMIT 1');
-                console.log(result.rows[0]["country_code"]);
                 return result.rows[0]["country_code"];
             }
             catch (error) {

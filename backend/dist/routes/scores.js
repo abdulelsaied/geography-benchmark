@@ -7,4 +7,5 @@ const express_1 = __importDefault(require("express"));
 const scoresController_1 = __importDefault(require("../controllers/scoresController"));
 const router = express_1.default.Router();
 router.post("/", scoresController_1.default.addScore);
+router.get("/", scoresController_1.default.getScores);
 exports.default = router;

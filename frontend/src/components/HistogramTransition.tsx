@@ -1,45 +1,37 @@
-import { useState, useEffect } from "react";
-import { data, data2 } from "../assets/data";
-import { Histogram } from "./Histogram";
-
-const BUTTONS_HEIGHT = 50;
+import { useEffect, useState } from 'react';
+import { Histogram } from './Histogram';
+import { useScores } from '../context/useScores'; 
 
 type HistogramDatasetTransitionProps = {
   width: number;
   height: number;
-  selectedGame: 'flagMemory' | 'moreOrLess';
+  selectedGame: 'flag-memory' | 'more-or-less';
 };
 
-const buttonStyle = {
-  border: "1px solid #9a6fb0",
-  borderRadius: "3px",
-  padding: "0px 8px",
-  margin: "10px 2px",
-  fontSize: 14,
-  color: "#9a6fb0",
-  opacity: 0.7,
-};
 
 export const HistogramDatasetTransition = ({
   width,
   height,
   selectedGame,
 }: HistogramDatasetTransitionProps) => {
-  const [selectedData, setSelectedData] = useState<number[]>(data);
+  const { gameData, loading } = useScores();
+  const [selectedData, setSelectedData] = useState<number[]>([]);
 
   useEffect(() => {
-    if (selectedGame === 'flagMemory') {
-      setSelectedData(data); // or other dataset for flagMemory
-    } else if (selectedGame === 'moreOrLess') {
-      setSelectedData(data2); // or other dataset for moreOrLess
+    if (!loading && gameData[selectedGame]) {
+      setSelectedData(gameData[selectedGame]);
     }
-  }, [selectedGame]);
+  }, [selectedGame, gameData, loading]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
       <Histogram
         width={width}
-        height={height - BUTTONS_HEIGHT}
+        height={height}
         data={selectedData}
       />
     </div>

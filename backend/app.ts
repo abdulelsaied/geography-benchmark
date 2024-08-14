@@ -7,12 +7,14 @@ const port = 8000;
 
 const app = express();
 
-app.use(express.json());
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }))
+
+app.use(express.json());
+
 
 app.use("/country", countryRouter);
 app.use("/scores", scoresRouter);

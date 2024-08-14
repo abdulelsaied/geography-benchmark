@@ -17,8 +17,18 @@ class ScoresModel {
     addScore(game_title, score) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const result = yield database_1.default.query('INSERT INTO scores (game_title, score) VALUES ($1, $2)', [game_title, score]);
-                console.log(result);
+                yield database_1.default.query('INSERT INTO scores (game_title, score) VALUES ($1, $2)', [game_title, score]);
+            }
+            catch (error) {
+                console.log(error);
+            }
+        });
+    }
+    getScores(game_title) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield database_1.default.query('SELECT score FROM scores WHERE game_title = $1;', [game_title]);
+                return result.rows.map(row => row.score);
             }
             catch (error) {
                 console.log(error);
