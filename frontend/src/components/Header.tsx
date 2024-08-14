@@ -13,15 +13,19 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-row w-full justify-between pr-4 items-end mb-2">
+      <div className="flex flex-row w-full justify-center sm:justify-between items-end mb-2">
         <div className = "flex flex-row items-end text-white">
-          <div className="pl-4 pr-4 border-r-2 border-white cursor-pointer" onClick={() => navigate('/')}> 
-            <h1 className="text-4xl font-bold">GE🌎GRAPHY</h1>
-            <h1 className="text-4xl font-bold">BENCHMARK</h1>
+          <div className="pr-4 border-white border-r-2 sm:border-r-0 lg:border-r-2 cursor-pointer" onClick={() => navigate('/')}> 
+            <h1 className="text-lg sm:text-4xl font-bold">GE🌎GRAPHY</h1>
+            <h1 className="text-lg sm:text-4xl font-bold">BENCHMARK</h1>
           </div>
           <div className="ml-4">
-            <h4 className="text-xl">test your geo skills</h4>
-            <h4 className="text-xl">inspired by HumanBenchmark</h4>
+            <h4 className="hidden lg:block lg:text-xl">
+              test your geo skills
+            </h4>
+            <h4 className="hidden lg:block lg:text-xl">
+              inspired by HumanBenchmark
+            </h4>
           </div>
         </div>
         <div className="flex flex-row items-end gap-x-4">

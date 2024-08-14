@@ -7,7 +7,7 @@ import Layout from '../components/Layout';
 const HomePage: React.FC = () => {
   return (
     <Layout>
-      <div className="flex gap-12">
+      <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 md:gap-12">
         <MenuCard
           title="Flag Memory"
           subtitle="Remember as many flags as possible"
