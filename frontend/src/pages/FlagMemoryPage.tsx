@@ -118,7 +118,7 @@ const FlagMemoryPage: React.FC = () => {
   return (
     <Layout>
       <div 
-        className={`flex flex-col gap-4 border-4 border-black bg-white rounded-3xl p-4 md:p-8 text-center ${shake ? 'shake' : ''}`}
+        className={`flex flex-col border-2 sm:border-4 border-black bg-white rounded-3xl p-4 md:p-8 text-center ${shake ? 'shake' : ''}`}
       >
         {showTitle && !showFinalScore ? 
            ( <div>
@@ -146,10 +146,14 @@ const FlagMemoryPage: React.FC = () => {
               data={histogramData}
             />
           ) : (
-            <Flag countryCode={currentCountryCode} />
+            <Flag 
+              countryCode={currentCountryCode} 
+              width={width}
+              height={height}
+            />
           )}
         </div>
-        <div id="game-buttons" className="flex md:flex-row items-center justify-center gap-4 md:gap-6">
+        <div id="game-buttons" className="flex md:flex-row items-center justify-center pt-2 md:pt-4 gap-4 md:gap-6">
           {!gameStarted ? (
             <GameButton text="start" buttonFunction={() => startGame()} />
           ) : (

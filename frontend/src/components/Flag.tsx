@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react'
 
 interface FlagProps {
     countryCode: string;
+    width: number;
+    height: number;
 }
 
-const Flag: React.FC<FlagProps> = ({countryCode}) => {
+const Flag: React.FC<FlagProps> = ({countryCode, width, height}) => {
 
     const [flagUrl, setflagUrl] = useState('');
 
@@ -24,7 +26,10 @@ const Flag: React.FC<FlagProps> = ({countryCode}) => {
         }
     }, [countryCode])
     return (
-        <div className="w-[300px] h-[200px] md:w-[380px] md:h-[253px] border-4 border-black overflow-hidden flex items-center justify-center">
+        <div 
+            className="border-4 border-black overflow-hidden flex items-center justify-center"
+            style={{ width: `${width}px`, height: `${height}px` }}
+        >
             <img 
                 src={flagUrl} 
                 alt={`Flag of ${countryCode}`} 

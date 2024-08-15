@@ -8,7 +8,7 @@ const countryController = {
             res.json(countryCode) 
         } catch (error) {
             console.log(error);
-            res.send("error handling POST /flag-memory/start");
+            res.send("error handling POST");
         }
     },
 
@@ -18,7 +18,7 @@ const countryController = {
             res.json(country) 
         } catch (error) {
             console.log(error);
-            res.send("error handling POST /flag-memory/start");
+            res.send("error handling POST");
         }
     },
 }

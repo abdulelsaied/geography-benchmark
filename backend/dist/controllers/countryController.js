@@ -21,7 +21,7 @@ const countryController = {
         }
         catch (error) {
             console.log(error);
-            res.send("error handling POST /flag-memory/start");
+            res.send("error handling POST");
         }
     }),
     getCountry: (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -31,7 +31,7 @@ const countryController = {
         }
         catch (error) {
             console.log(error);
-            res.send("error handling POST /flag-memory/start");
+            res.send("error handling POST");
         }
     }),
 };
