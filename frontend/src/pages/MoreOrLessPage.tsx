@@ -54,6 +54,12 @@ const MoreOrLessPage: React.FC = () => {
   }, [flash]);
 
   useEffect(() => {
+    if (loading) {
+      console.log("loading...");
+    }
+  }, [loading]);
+
+  useEffect(() => {
     if (showFinalScore && gameData['more-or-less']) {
       console.log(gameData["more-or-less"]);
       setHistogramData(gameData['more-or-less']);
@@ -117,11 +123,12 @@ const MoreOrLessPage: React.FC = () => {
         setShake(true);
         setTimeout(() => setShake(false), 500); 
       }
-      setLeftCountry(rightCountry);
+      let newLeftCountry = rightCountry;
       let fetchedRightCountry;
       do {
         fetchedRightCountry = await countryApi.fetchRandomCountry();
       } while (fetchedRightCountry.country_code === leftCountry.country_code);
+      setLeftCountry(newLeftCountry);
       setRightCountry(fetchedRightCountry);
       setCategory(getRandomCategory());
     } catch (error) {
@@ -132,7 +139,7 @@ const MoreOrLessPage: React.FC = () => {
   return (
     <Layout>
       <div 
-        className={`relative flex flex-col gap-y-8 border-2 sm:border-4 border-black bg-white rounded-3xl p-4 md:p-8 text-center ${shake ? 'shake' : ''}`}
+        className={`w-[300px] h[125px] sm:w-[450px] sm:h[250px] md:w-[650px] md:h-[450px] relative flex flex-col gap-y-8 border-2 sm:border-4 border-black bg-white rounded-3xl p-4 md:p-8 text-center ${shake ? 'shake' : ''}`}
       >
         {showTitle && !showFinalScore ? 
            ( <div>
