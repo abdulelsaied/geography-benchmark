@@ -16,22 +16,22 @@ const MoreOrLessPage: React.FC = () => {
 
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [lives, setLives] = useState<number>(3);
-  const [leftCountry, setLeftCountry] = useState({
-	"name": "Spain",
-	"population": 48446594,
-	"size": 498980,
-	"continent": "Europe",
-	"country_code": "ES",
-	"primary_language": "Spanish"
-});
 
+  const [leftCountry, setLeftCountry] = useState({
+  "name": "Spain",
+  "population": 48446594,
+  "size": 498980,
+  "continent": "Europe",
+  "country_code": "ES",
+  "primary_language": "Spanish"
+});
   const [rightCountry, setRightCountry] = useState({
-	"name": "Costa Rica",
-	"population": 5262225,
-	"size": 51060,
-	"continent": "North America",
-	"country_code": "CR",
-	"primary_language": "Spanish"
+  "name": "Costa Rica",
+  "population": 5262225,
+  "size": 51060,
+  "continent": "North America",
+  "country_code": "CR",
+  "primary_language": "Spanish"
 });
   const [category, setCategory] = useState<Category>("population");
   const [score, setScore] = useState<number>(0);
@@ -52,12 +52,6 @@ const MoreOrLessPage: React.FC = () => {
       return () => clearTimeout(timer);
     }
   }, [flash]);
-
-  useEffect(() => {
-    if (loading) {
-      console.log("loading...");
-    }
-  }, [loading]);
 
   useEffect(() => {
     if (showFinalScore && gameData['more-or-less']) {
@@ -179,7 +173,7 @@ const MoreOrLessPage: React.FC = () => {
                   style={{ visibility: gameStarted ? 'visible' : 'hidden' }}
                 >
                   <p className="text-base mt-2 sm:text-lg md:text-xl">has a {category} of</p>
-                  <p className="font-bold text-base mt-2 sm:text-lg md:text-xl">{leftCountry[category]}</p>
+                  <p className="font-bold text-base mt-2 sm:text-lg md:text-xl">{leftCountry[category]} { category == "population" ? "people" : <>km<sup>2</sup></>}</p>
                 </div>
               </div>
               <div className="flex flex-col items-center">
