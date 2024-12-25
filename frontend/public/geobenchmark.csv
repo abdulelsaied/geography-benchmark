@@ -1,0 +1,196 @@
+name,population,size,continent,country_code,primary_language
+Afghanistan,34262840,652230,Asia,af,"Pashto; Dari"
+Albania,2761785,27400,Europe,al,Albanian
+Algeria,45400000,2381741,Africa,dz,Arabic
+Andorra,85101,468,Europe,ad,Catalan
+Angola,34094077,1246700,Africa,ao,Portuguese
+Antigua and Barbuda,100772,442,North America,ag,English
+Argentina,46654581,2736690,South America,ar,Spanish
+Armenia,2981200,28470,Asia,am,Armenian
+Australia,26461912,7682300,Oceania,au,English
+Austria,9154514,82520,Europe,at,German
+Azerbaijan,10151517,82650,Asia,az,Azerbaijani
+Bahamas,397360,10010,North America,bs,English
+Bahrain,1577059,778,Asia,bh,Arabic
+Bangladesh,169828911,130170,Asia,bd,Bengali
+Barbados,267800,431,North America,bb,English
+Belarus,9200617,202900,Europe,by,"Belarusian; Russian"
+Belgium,11810018,30280,Europe,be,"Dutch; French; German"
+Belize,441471,22810,North America,bz,English
+Benin,12606998,112760,Africa,bj,French
+Bhutan,770276,38140,Asia,bt,Dzongkha
+Bolivia,12006031,1083300,South America,bo,Spanish
+Bosnia and Herzegovina,3277082,51200,Europe,ba,"Bosnian; Croatian; Serbian"
+Botswana,2410338,566730,Africa,bw,"English; Setswana"
+Brazil,203080756,8460415,South America,br,Portuguese
+Brunei,445400,5270,Asia,bn,Malay
+Bulgaria,6447710,108489,Europe,bg,Bulgarian
+Burkina Faso,22752315,273800,Africa,bf,French
+Burundi,12837740,25680,Africa,bi,"Kirundi; French"
+Cambodia,17091464,176520,Asia,kh,Khmer
+Cameroon,28088845,472710,Africa,cm,"French; English"
+Canada,40528396,9093507,North America,ca,"English; French"
+Cape Verde,491233,4033,Africa,cv,Portuguese
+Central African Republic,5633412,622984,Africa,cf,"French; Sango"
+Chad,17414717,1259200,Africa,td,"French; Arabic"
+Chile,19960889,743812,South America,cl,Spanish
+China,1409670000,9326410,Asia,cn,Mandarin
+Colombia,52215503,1038700,South America,co,Spanish
+Comoros,758316,1861,Africa,km,"Arabic; French"
+Costa Rica,5262225,51060,North America,cr,Spanish
+Croatia,3855641,55974,Europe,hr,Croatian
+Cuba,11089511,103800,North America,cu,Spanish
+Cyprus,918100,9241,Europe,cy,"Greek; Turkish"
+Czech Republic,10882235,77187,Europe,cz,Czech
+Democratic Republic of the Congo,95370000,2267048,Africa,cd,French
+Denmark,5961249,42434,Europe,dk,Danish
+Djibouti,1001454,23180,Africa,dj,"French; Arabic"
+Dominica,67408,750,North America,dm,English
+Dominican Republic,10760028,48320,North America,do,Spanish
+East Timor,1354662,14874,Asia,tl,"Tetum; Portuguese"
+Ecuador,16938986,276841,South America,ec,Spanish
+Egypt,104462545,995450,Africa,eg,Arabic
+El Salvador,6884888,20720,North America,sv,Spanish
+Equatorial Guinea,1558160,28051,Africa,gq,"Spanish; French"
+Eritrea,3748902,101000,Africa,er,"Tigrinya; Arabic; English"
+Estonia,1366491,42388,Europe,ee,Estonian
+Eswatini,1223362,17200,Africa,sz,"Swati; English"
+Ethiopia,107334000,1096570,Africa,et,Amharic
+Fiji,893468,18272,Oceania,fj,"English; Fijian; Hindi"
+Finland,5574011,303815,Europe,fi,"Finnish; Swedish"
+France,68373000,640427,Europe,fr,French
+Gabon,2233272,257670,Africa,ga,French
+Gambia,2417471,10120,Africa,gm,English
+Georgia,3736400,69490,Asia,ge,Georgian
+Germany,84607016,349390,Europe,de,German
+Ghana,30832019,227533,Africa,gh,English
+Greece,10413982,128900,Europe,gr,Greek
+Grenada,112579,340,North America,gd,English
+Guatemala,17602431,107160,North America,gt,Spanish
+Guinea,13261638,245717,Africa,gn,French
+Guinea-Bissau,1781308,28120,Africa,gw,Portuguese
+Guyana,743699,196850,South America,gy,English
+Haiti,11743017,27560,North America,ht,"French; Haitian Creole"
+Honduras,9745149,111890,North America,hn,Spanish
+Hong Kong,7498100,1050,Asia,hk,"Cantonese; English"
+Hungary,9597085,91260,Europe,hu,Hungarian
+Iceland,396960,100830,Europe,is,Icelandic
+India,1392329000,2973190,Asia,in,"Hindi; English"
+Indonesia,279118866,1811569,Asia,id,Indonesian
+Iran,84055000,1531595,Asia,ir,Farsi
+Iraq,43324000,437367,Asia,iq,Arabic
+Ireland,5281600,68883,Europe,ie,"Irish; English"
+Israel,9842000,21497,Asia,il,"Hebrew; Arabic"
+Italy,58919345,295717,Europe,it,Italian
+Ivory Coast,29389150,318000,Africa,ci,French
+Jamaica,2825544,10830,North America,jm,English
+Japan,124090000,364485,Asia,jp,Japanese
+Jordan,11302000,88794,Asia,jo,Arabic
+Kazakhstan,20033546,2699700,Asia,kz,Kazakh
+Kenya,51526000,569140,Africa,ke,"Swahili; English"
+Kiribati,120740,811,Africa,ki,"English; Gilbertese"
+Kosovo,1762220,10887,Europe,xk,"Albanian; Serbian"
+Kuwait,4670713,17818,Asia,kw,Arabic
+Kyrgyzstan,7100000,191800,Asia,kg,Kyrgyz
+Laos,7443000,230800,Asia,la,Lao
+Latvia,1874000,62230,Europe,lv,Latvian
+Lebanon,5490000,10230,Asia,lb,"Arabic; French"
+Lesotho,2306000,30355,Africa,ls,"Sesotho; English"
+Liberia,5248621,96320,Africa,lr,English
+Libya,6931061,1759540,Africa,ly,Arabic
+Liechtenstein,39724,160,Europe,li,German
+Lithuania,2886515,62610,Europe,lt,Lithuanian
+Luxembourg,660809,2574,Europe,lu,"Luxembourgish; French; German"
+Madagascar,26923353,581540,Africa,mg,"Malagasy; French"
+Malawi,21507723,94080,Africa,mw,"Chewa; English"
+Malaysia,33379500,328657,Asia,my,Malay
+Maldives,382751,300,Asia,mv,Dhivehi
+Mali,22395489,1220190,Africa,ml,French
+Malta,519562,315,Europe,mt,"Maltese; English"
+Marshall Islands,42418,180,Oceania,mh,"Marshallese; English"
+Mauritania,4475683,1030700,Africa,mr,Arabic
+Mauritius,1261041,2030,Africa,mu,"Mauritian Creole; French; English"
+Mexico,129406736,1943950,North America,mx,Spanish
+Micronesia,105754,700,Oceania,fm,English
+Moldova,2512758,32970,Europe,md,"Romanian; Russian; Gagauz"
+Monaco,39050,2,Europe,mc,French
+Mongolia,3457548,1557507,Asia,mn,Mongolian
+Montenegro,622359,14026,Europe,me,Montengrin
+Morocco,36910560,446550,Africa,ma,Arabic
+Mozambique,31255435,801590,Africa,mz,Portuguese
+Myanmar,54045400,676578,Asia,mm,Burmese
+Namibia,2355000,825615,Africa,na,English
+Nauru,10834,21,Oceania,nr,Nauruan
+Nepal,29136808,147516,Asia,np,Nepali
+Netherlands,17588336,41850,Europe,nl,Dutch
+New Zealand,4735100,270534,Oceania,nz,English
+Nicaragua,6070850,130375,North America,ni,Spanish
+Niger,23310715,1267000,Africa,ne,French
+Nigeria,140000000,923768,Africa,ng,English
+North Macedonia,2083459,25713,Europe,mk,Macedonian
+Norway,5087000,148729,Europe,no,Norwegian
+Oman,4258000,309500,Asia,om,Arabic
+Pakistan,220892331,881913,Asia,pk,Urdu
+Palau,18000,459,Oceania,pw,English
+Panama,4314767,75417,North America,pa,Spanish
+Papua New Guinea,8947024,462840,Oceania,pg,"Tok Pisin; Hiri Motu"
+Paraguay,6810000,406750,South America,py,Spanish
+Peru,32971854,1285216,South America,pe,Spanish
+Philippines,109581078,300000,Asia,ph,Filipino
+Poland,38386000,312696,Europe,pl,Polish
+Portugal,10295909,92090,Europe,pt,Portuguese
+Qatar,2881053,11586,Asia,qa,Arabic
+Romania,19237691,238397,Europe,ro,Romanian
+Russia,145912025,17098242,Europe,ru,Russian
+Rwanda,12374397,26338,Africa,rw,Kinyarwanda
+Saint Kitts and Nevis,53594,261,North America,kn,English
+Saint Lucia,183629,616,North America,lc,English
+Saint Vincent and the Grenadines,110210,389,North America,vc,English
+Samoa,198410,2842,Oceania,ws,Samoan
+San Marino,33400,61,Europe,sm,Italian
+Sao Tome and Principe,219159,964,Africa,st,Portuguese
+Saudi Arabia,34813867,2149690,Asia,sa,Arabic
+Senegal,16082794,196722,Africa,sn,French
+Serbia,8772235,88361,Europe,rs,Serbian
+Seychelles,98347,455,Africa,sc,"English; French; Seychellois Creole"
+Sierra Leone,7976983,71740,Africa,sl,English
+Singapore,5612310,719,Asia,sg,"Mandarin; Malay; Tamil"
+Slovakia,5456362,49036,Europe,sk,Slovak
+Slovenia,2078654,20273,Europe,si,Slovene
+Solomon Islands,721000,28450,Oceania,sb,English
+Somalia,15893222,637657,Africa,so,"Somali; Arabic"
+South Africa,59308690,1219090,Africa,za,"Afrikaans; English"
+South Korea,51329899,100032,Asia,kr,Korean
+South Sudan,11193725,619745,Africa,ss,English
+Spain,46719142,505992,Europe,es,Spanish
+Sri Lanka,21413249,65610,Asia,lka,Sinhala
+Sudan,43849260,1861484,Africa,sd,Arabic
+Suriname,581363,163820,South America,sr,Dutch
+Sweden,10353442,450295,Europe,se,Swedish
+Switzerland,8593590,41285,Europe,ch,Italian
+Syria,17500658,185180,Asia,sy,Arabic
+Taiwan,23583330,36193,Asia,tw,"Mandarin Chinese"
+Tajikistan,9292000,143100,Asia,tj,Tajik
+Tanzania,59734218,945087,Africa,tz,Swahili
+Thailand,6939741,513120,Asia,th,Thai
+Togo,8278724,56785,Africa,tg,French
+Tonga,100651,747,Oceania,to,Tongan
+Trinidad and Tobago,1399488,5128,North America,tt,"English"
+Tunisia,11818619,163610,Africa,tn,Arabic
+Turkey,83956116,783562,Asia,tr,"Turkish"
+Turkmenistan,6031187,491210,Asia,tm,Turkmen
+Tuvalu,10640,26,Oceania,TV,English
+Uganda,45741000,241038,Africa,ug,"English; Swahili"
+Ukraine,43733759,603550,Europe,ua,Ukrainian
+United Arab Emirates,9890400,83600,Asia,ae,Arabic
+United Kingdom,67886011,243610,Europe,gb,English
+United States,328200000,9833517,North America,us,English
+Uruguay,3477000,176215,South America,uy,Spanish
+Uzbekistan,33330000,447400,Asia,uz,Uzbek
+Vanuatu,307150,12189,Oceania,vu,Bislama
+Vatican City,800,0,Europe,va,Italian
+Venezuela,28435943,912050,South America,ve,Spanish
+Vietnam,97338583,331210,Asia,vn,Vietnamese
+Yemen,29825968,527968,Asia,ye,Arabic
+Zambia,18383955,752612,Africa,zm,English
+Zimbabwe,14862924,390757,Africa,zw,English

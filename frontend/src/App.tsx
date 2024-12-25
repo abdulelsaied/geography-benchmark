@@ -10,6 +10,7 @@ import MoreOrLessPage from './pages/MoreOrLessPage';
 import VersusAiPage from './pages/VersusAiPage';
 import { ScoresProvider } from './context/ScoresProvider';
 import { preloadImages } from './utils/imageUtils';
+// import { CountryProvider } from './context/CountryProvider';
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
     preloadImages();
     console.log("preloaded images");
   }, []);
+
+
   return (
     <ScoresProvider>
       <Router>

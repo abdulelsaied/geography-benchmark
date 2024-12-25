@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import GameButton from '../components/GameButton';
 import StatusBar from '../components/StatusBar';
 import Flag from '../components/Flag';
 import Layout from '../components/Layout';
-import countryApi from '../services/countryApi';
 import scoresApi from '../services/scoresApi';
 import { saveHighScore, getHighScore } from '../utils/highScores'; 
 import { useScores } from '../context/useScores'; 
 import { Histogram } from '../components/Histogram';
+import { getRandomCountry, getRandomCountryCode } from '../utils/countryUtils';
+// import { CountryContext } from '../context/CountryContext';
 
 const FlagMemoryPage: React.FC = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
@@ -57,14 +58,16 @@ const FlagMemoryPage: React.FC = () => {
 
   const startGame = async () => {
     try {
-      const startingCountryCode = await countryApi.fetchRandomCountryCode();
-      setCurrentCountryCode(startingCountryCode);
-      setPreviousCountryCode(startingCountryCode);
-      setGameStarted(true);
-      setLives(3);
-      setSeenCountries(new Set());
-      setShowTitle(false);
-      setShowFinalScore(false);
+      const startingCountryCode = await getRandomCountryCode();
+      if (startingCountryCode){
+        setCurrentCountryCode(startingCountryCode);
+        setPreviousCountryCode(startingCountryCode);
+        setGameStarted(true);
+        setLives(3);
+        setSeenCountries(new Set());
+        setShowTitle(false);
+        setShowFinalScore(false);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -99,14 +102,16 @@ const FlagMemoryPage: React.FC = () => {
         setTimeout(() => setShake(false), 500); 
       }
       
-      let nextCountryCode;
+      let nextCountryCode: string;
+
       do {
         nextCountryCode =
           Math.random() < 0.5 && seenCountries.size > 0
             ? Array.from(seenCountries)[Math.floor(Math.random() * seenCountries.size)]
-            : await countryApi.fetchRandomCountryCode();
+            : await getRandomCountryCode();
+
       } while (nextCountryCode === currentCountryCode);
-  
+
       setPreviousCountryCode(currentCountryCode); 
       setCurrentCountryCode(nextCountryCode);
   

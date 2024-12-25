@@ -22,7 +22,6 @@ export const ScoresProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         setLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
