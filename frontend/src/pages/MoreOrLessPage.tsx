@@ -152,6 +152,7 @@ const MoreOrLessPage: React.FC = () => {
              <StatusBar 
                lives={lives} 
                score={score} 
+               difficulty={0}
                flash={flash} 
              />
            )

@@ -14,7 +14,7 @@ const scoresApi = {
             if (!response.ok) {
                 throw new Error(`status: ${response.status}`)
             }
-            console.log("added score of ${score} to game ${game_title}", score, game_title);
+            console.log(`added score of ${score} to game ${game_title}`);
         }
         catch (error) {
             console.log(error);

@@ -9,7 +9,7 @@ export const ScoresProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const games = ['flag-memory', 'more-or-less'];
+        const games = ['flag-memory', 'more-or-less', 'versus-ai'];
         const data = await Promise.all(games.map(game => scoresApi.getScores(game)));
         const gameData = games.reduce((acc, game, index) => {
           acc[game] = data[index];

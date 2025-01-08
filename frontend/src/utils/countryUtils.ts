@@ -60,3 +60,11 @@ export const getRandomCountryCode = async (): Promise<string> => {
     return countryList[randomIndex].country_code;
 };
 
+    export const getCountryNames = async (): Promise<{ label: string; value: string }[]> => {
+        const countryList = await fetchAndParseCSV();
+        return countryList.map((country) => ({
+            label: country.name,
+            value: country.name
+        }));
+    };
+

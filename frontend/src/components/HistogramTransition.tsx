@@ -5,7 +5,7 @@ import { useScores } from '../context/useScores';
 type HistogramDatasetTransitionProps = {
   width: number;
   height: number;
-  selectedGame: 'flag-memory' | 'more-or-less';
+  selectedGame: 'flag-memory' | 'more-or-less' | 'versus-ai';
 };
 
 
