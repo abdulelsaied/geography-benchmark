@@ -10,7 +10,6 @@ import { Histogram } from '../components/Histogram';
 import getRandomCategory from '../utils/randomCategory';
 import { getRandomCountryCode, getCountryNames, getRandomCountry, Country } from '../utils/countryUtils';
 import scoresApi from '../services/scoresApi';
-import { getHint, HintResponse } from "../services/openaiApi"
 
 const VersusAiPage: React.FC = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -28,7 +27,6 @@ const VersusAiPage: React.FC = () => {
   const [currentCountry, setCurrentCountry] = useState<string>();
   const [seenCountries, setSeenCountries] = useState<Set<string>>(new Set());
   const [countryNames, setCountryNames] = useState<{label: string, value: string}[]>([]);
-  const [currentHint, setCurrentHint] = useState<HintResponse>();
 
   const { gameData, loading } = useScores();
 
@@ -85,7 +83,6 @@ const VersusAiPage: React.FC = () => {
         setSeenCountries(new Set());
         setShowTitle(false);
         setShowFinalScore(false);
-        setCurrentHint(await getHint(currentCountry || "Egypt", difficulty));
       }
     } catch (error) {
       console.log(error);
@@ -161,7 +158,6 @@ const VersusAiPage: React.FC = () => {
             />
           ) : (
             <div>
-              <span>{currentHint?.hint}</span>
               <FaRobot className = "animate-shake-rotate"/>
             </div>
           )}
