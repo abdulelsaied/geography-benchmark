@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-const country_1 = __importDefault(require("./routes/country"));
+const ai_1 = __importDefault(require("./routes/ai"));
 const scores_1 = __importDefault(require("./routes/scores"));
 const port = 8000;
 const app = (0, express_1.default)();
@@ -15,7 +15,7 @@ app.use((0, cors_1.default)({
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 app.use(express_1.default.json());
-app.use("/country", country_1.default);
+app.use("/ai", ai_1.default);
 app.use("/scores", scores_1.default);
 app.set("view engine", "ejs");
 app.listen(port, () => {
