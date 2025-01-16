@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Select from 'react-select'
 import Layout from '../components/Layout';
 import { FaRobot } from 'react-icons/fa';
+import Typewriter, { TypewriterClass } from 'typewriter-effect';
 import GameButton from '../components/GameButton';
 import { useScores } from '../context/useScores';
 import { getHighScore, saveHighScore } from '../utils/highScores';
@@ -10,6 +11,7 @@ import { Histogram } from '../components/Histogram';
 import getRandomCategory from '../utils/randomCategory';
 import { getRandomCountryCode, getCountryNames, getRandomCountry, Country } from '../utils/countryUtils';
 import scoresApi from '../services/scoresApi';
+import openaiApi from '../services/openaiApi';
 
 const VersusAiPage: React.FC = () => {
   const [gameStarted, setGameStarted] = useState(false);
@@ -20,15 +22,25 @@ const VersusAiPage: React.FC = () => {
   const [showFinalScore, setShowFinalScore] = useState<boolean>(false);
   const [finalScore, setFinalScore] = useState<number>(0);
   const [shake, setShake] = useState<boolean>(false); 
+  const [robotAnimated, setRobotAnimated] = useState<boolean>(false); 
   const [flash, setFlash] = useState<boolean>(false); 
   const [histogramData, setHistogramData] = useState<number[]>([]); 
   const [width, setWidth] = useState<number>(200);
   const [height, setHeight] = useState<number>(100);
   const [currentCountry, setCurrentCountry] = useState<string>();
+  const [hint, setHint] = useState<string>("");
   const [seenCountries, setSeenCountries] = useState<Set<string>>(new Set());
   const [countryNames, setCountryNames] = useState<{label: string, value: string}[]>([]);
 
   const { gameData, loading } = useScores();
+
+  const typewriterRef = useRef<TypewriterClass | null>(null);
+
+  useEffect(() => {
+    console.log("hint has changed");
+    console.log(hint);
+    updateHint(hint);
+  }, [hint]);
 
   useEffect(() => {
     if (flash) {
@@ -36,6 +48,10 @@ const VersusAiPage: React.FC = () => {
       return () => clearTimeout(timer);
     }
   }, [flash]);
+
+  useEffect(() => {
+    console.log(difficulty);
+  }, [difficulty]);
 
   useEffect(() => {
     if (showFinalScore && gameData['versus-ai']) {
@@ -72,17 +88,27 @@ const VersusAiPage: React.FC = () => {
     return () => window.removeEventListener('resize', updateDimensions);
   }, []);
 
+  const updateHint = (newHint: string) => {
+    if (typewriterRef.current) {
+      console.log("updating tpywriter text");
+      typewriterRef.current.deleteAll().typeString(newHint).start();
+    }
+  }
+
   const startGame = async () => {
     try {
       const startingCountry = await getRandomCountry();
+      const hintResponse = await openaiApi.generateHint(startingCountry.name, difficulty);
       if (startingCountry) {
         setCurrentCountry(startingCountry.name);
+        setHint(hintResponse);
         setLives(3);
         setDifficulty(1);
         setGameStarted(true);
         setSeenCountries(new Set());
         setShowTitle(false);
         setShowFinalScore(false);
+        setRobotAnimated(true);
       }
     } catch (error) {
       console.log(error);
@@ -98,6 +124,7 @@ const VersusAiPage: React.FC = () => {
         }
         setScore(score + 1);
         setFlash(true);
+        setDifficulty(difficulty + 1)
       } else {
         if (lives - 1 === 0) {
           scoresApi.addScore('versus-ai', score);
@@ -120,6 +147,8 @@ const VersusAiPage: React.FC = () => {
         nextCountry = (await getRandomCountry()).name;
       } while (nextCountry === currentCountry);
       setCurrentCountry(nextCountry);
+      const hintResponse = await openaiApi.generateHint(nextCountry, difficulty);
+      setHint(hintResponse);
     } catch (error) {
       console.log(error);
     }
@@ -144,21 +173,36 @@ const VersusAiPage: React.FC = () => {
              <StatusBar 
                lives={lives} 
                score={score} 
-               difficulty={4}
+               difficulty={difficulty}
                flash={flash} 
              />
            )
         }
-        <div className="w-[300px] h-[200px] md:w-[380px] md:h-[253px] bg-gray-200 mx-auto">
+        <div className="w-[400px] h-[200px] md:w-[480px] md:h-[253px] mx-auto flex items-center justify-center">
           {showFinalScore ? (
-            <Histogram
-              width={width} 
-              height={height} 
-              data={histogramData}
-            />
+            <Histogram width={width} height={height} data={histogramData} />
           ) : (
-            <div>
-              <FaRobot className = "animate-shake-rotate"/>
+            <div className="w-full h-[200px] md:h-[253px] flex items-center justify-between">
+              {/* Robot */}
+              <FaRobot
+                className = {`w-full h-full transition-all duration-500 ease-in-out animate-shake-rotate ${
+                  robotAnimated ? 'w-[15%] transform translate-x-[-50%]' : ''
+                } animate-shake-rotate `}
+              />
+                {robotAnimated && (
+                  <div className="w-[80%] h-full flex items-center justify-center p-4 bg-gray-100 border-2 border-gray-300 rounded-lg">
+                    <Typewriter
+                    onInit={(typewriter) => {
+                      typewriterRef.current = typewriter;
+                    }}
+                      options={{
+                        strings: hint,
+                        delay: 75,
+                        autoStart: true,
+                      }}
+                    />
+                  </div>
+                )}
             </div>
           )}
         </div>

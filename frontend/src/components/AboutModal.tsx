@@ -44,6 +44,9 @@ const AboutModal: React.FC<AboutModalProps> = ({ isOpen, onClose }) => {
               <ListItem fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}>
                 <strong>More or Less:</strong> Choose the country with the higher statistic.
               </ListItem>
+              <ListItem fontSize={{ base: 'sm', md: 'md', lg: 'lg' }}>
+                <strong>Versus AI:</strong> Guess the country based on AI-generated hints that increase in difficulty.
+              </ListItem>
             </UnorderedList>
             <Text fontSize={{ base: 'sm', md: 'lg', lg: 'lg' }} mb={{ base: 2, md: 4 }}>
               The <strong>Stats</strong> tab allows you to compare your high scores with those of other players, giving you insight into how you stack up against the rest of the community.
