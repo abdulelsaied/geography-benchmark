@@ -50,10 +50,6 @@ const VersusAiPage: React.FC = () => {
   }, [flash]);
 
   useEffect(() => {
-    console.log(difficulty);
-  }, [difficulty]);
-
-  useEffect(() => {
     if (showFinalScore && gameData['versus-ai']) {
       setHistogramData(gameData['versus-ai']);
     }
@@ -66,8 +62,6 @@ const VersusAiPage: React.FC = () => {
           setCountryNames(namesArray);
         } catch (error) {
             console.error("Error fetching country names:", error);
-        } finally {
-            console.log(countryNames);
         }
     };
     fetchCountries();
@@ -91,7 +85,7 @@ const VersusAiPage: React.FC = () => {
   const updateHint = (newHint: string) => {
     if (typewriterRef.current) {
       console.log("updating tpywriter text");
-      typewriterRef.current.deleteAll().typeString(newHint).start();
+      typewriterRef.current.deleteAll(25).typeString(newHint).start();
     }
   }
 
@@ -194,10 +188,12 @@ const VersusAiPage: React.FC = () => {
                     <Typewriter
                     onInit={(typewriter) => {
                       typewriterRef.current = typewriter;
+                      if (hint) {
+                        typewriter.typeString(hint).start();
+                      }
                     }}
                       options={{
-                        strings: hint,
-                        delay: 75,
+                        delay: 50,
                         autoStart: true,
                       }}
                     />
@@ -210,12 +206,19 @@ const VersusAiPage: React.FC = () => {
           {!gameStarted ? (
             <GameButton text="start" buttonFunction={() => startGame()} />
           ) : (
-            <Select 
+            <Select
               options={countryNames}
               onChange={(newValue) => {
                 if (newValue && gameStarted) {
                   handleGuess(newValue.value);
                 }
+              }}
+              className="w-64"
+              styles={{
+                menu: (provided) => ({
+                  ...provided,
+                  width: '16rem',
+                }),
               }}
             />
           )}
