@@ -176,7 +176,7 @@ const VersusAiPage: React.FC = () => {
           {showFinalScore ? (
             <Histogram width={width} height={height} data={histogramData} />
           ) : (
-            <div className="w-full h-[200px] md:h-[253px] flex items-center justify-between">
+            <div className="w-full h-[200px] md:h-[253px] flex items-center justify-between gap-x-10  ">
               {/* Robot */}
               <FaRobot
                 className = {`w-full h-full transition-all duration-500 ease-in-out animate-shake-rotate ${
